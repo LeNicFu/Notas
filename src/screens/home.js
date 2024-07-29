@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Image, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../context'
-import styles from '../style'
+import styles from '../styles'
 
 console.log('------------------- HOME -------------------')
 

@@ -2,12 +2,18 @@ import { CameraView, useCameraPermissions } from 'expo-camera'
 import { useContext, useEffect } from 'react'
 import { View } from 'react-native'
 import MyButton from '../components/myButton'
-import { GlobalContext} from '../context' 
+import { GlobalContext } from '../context'
 
 export default function MyCam() {
-  const { setTela, codigo, setCodigo, nome, setNome, listaDeNomes } = useContext(GlobalContext)
+  const { setTela, setCodigo} = useContext(GlobalContext)
   const handleCodeScanned = (code) => {
-    console.log(code)
+    // console.log(code, code.data)
+    if (code.data.length > 0) {
+      [
+        setCodigo(code.data),
+        setTela(2)
+      ]
+    }
   }
   const [permission, requestPermission] = useCameraPermissions()
 
@@ -21,11 +27,8 @@ export default function MyCam() {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View style={{height: 200, width: 300}}>
+      <View style={{ height: 200, width: 300 }}>
         <CameraView style={{ flex: 1 }} barcodeScannerSettings={{ barCodeTypes: ['code128'] }} onBarcodeScanned={handleCodeScanned} />
-        {
-        // console.log(handleCodeScanned(), handleCodeScanned() == 'undefined')
-        }
       </View>
       <MyButton icon={'home'} onPress={() => setTela(0)} />
     </View>
