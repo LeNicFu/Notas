@@ -15,5 +15,20 @@ export default StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
+    },
+    nota: {
+        fontSize: 24,
+        textAlign: 'center'
+    },
+    modal: {
+        flex: 1,
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    containerModal: {
+        width: '86%',
+        height: '40%',
+        backgroundColor: '#BBBBBB',
+        borderRadius: 24
     }
 })

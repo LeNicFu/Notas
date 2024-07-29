@@ -1,13 +1,18 @@
-export function EncontrarNome(lista, codigo) {
+import { Alert } from 'react-native'
+
+const codigoEscolaAno = require('../data/paginaAno.json')
+const lista = require('../data/listaAlunos.json')
+
+export function EncontrarNome(codigo) {
     const itemComOCodigo = lista.find(item => item.codigo == codigo)
     if (itemComOCodigo) {
         return itemComOCodigo.nome
+    } else if (codigo >= 1 && codigo <= codigoEscolaAno[codigoEscolaAno.length - 1].Ano9b) {
+        return ''
     } else {
-        return 'Código não encontrado!'
+        return 'O código está ERRADO!'
     }
 }
-
-const codigoEscolaAno = require('../data/paginaAno.json')
 
 export function EncontrarEscola(codigo) {
     let dadosCodigo = {}
@@ -27,4 +32,10 @@ export function EncontrarEscola(codigo) {
         }
     }
     return dadosCodigo
+}
+
+export function ValorNota(nota) {
+    if (nota >= 0 && nota <= 16) {
+        return nota
+    }
 }
