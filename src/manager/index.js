@@ -5,7 +5,8 @@ import Home from '../screens/home'
 import Scanned from '../screens/scanned'
 import Notas from '../screens/notas'
 import Confirmacao from '../screens/confirmacao'
-import Lista from '../screens/lista'
+import Listas from '../screens/listas'
+import Alfabetica from '../screens/listas/alfabetica'
 
 export default function Manager() {
     const { tela } = useContext(GlobalContext)
@@ -20,6 +21,8 @@ export default function Manager() {
     } else if (tela === 4) {
         return <Confirmacao />
     } else if (tela === 5) {
-        return <Lista />
+        return <Listas />
+    } else if (tela === 5.1) {
+        return <Alfabetica />
     }
 }
