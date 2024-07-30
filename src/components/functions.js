@@ -1,5 +1,3 @@
-import { Alert } from 'react-native'
-
 const codigoEscolaAno = require('../data/paginaAno.json')
 const lista = require('../data/listaAlunos.json')
 
@@ -38,4 +36,14 @@ export function ValorNota(nota) {
     if (nota >= 0 && nota <= 16) {
         return nota
     }
+}
+
+export function EliminaZero(nota) {
+    let novaNota = nota
+    if (novaNota.length > 1) {
+        if (novaNota[0] == 0) {
+            novaNota = novaNota.slice(1)
+        }
+    }
+    return novaNota
 }

@@ -7,6 +7,12 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'black'
     },
+    containerConfirmacao: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#555555'
+    },
     texto1: {
         fontSize: 24,
         textAlign: 'center',
@@ -18,7 +24,8 @@ export default StyleSheet.create({
     },
     nota: {
         fontSize: 24,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
     modal: {
         flex: 1,

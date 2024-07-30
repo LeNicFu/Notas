@@ -13,6 +13,8 @@ export default function InfoProvider({ children }) {
     const [municipio, setMunicipio] = useState(null)
     const [escola, setEscola] = useState(null)
     const [visibleModalEditarNome, setVisibleModalEditarNome] = useState(false)
+    const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
+    const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
 
     const listaDeAlunos = obj
 
@@ -33,6 +35,10 @@ export default function InfoProvider({ children }) {
             municipio,
             setMunicipio,
             listaDeAlunos,
+            listaDeAlunosNotas,
+            setListaDeAlunosNotas,
+            visibleModalConfirmar,
+            setVisibleModalConfirmar,
             visibleModalEditarNome,
             setVisibleModalEditarNome,
         }}>

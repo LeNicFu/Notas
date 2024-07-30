@@ -22,14 +22,14 @@ export default function Notas() {
                 style={styles.nota}
                 placeholder='Digite a nota'
                 onChangeText={newNota => setNota(ValorNota(newNota.replace(/[^0-9]/g, '')))}
-                keyboardType='numeric'
+                keyboardType='number-pad'
                 defaultValue={nota}
             />
         </View>
         <View style={{ width: '95%', flexDirection: 'row', justifyContent: 'space-around', paddingTop: '15%' }}>
             <MyButton icon={'circle-with-cross'} color={'red'} onPress={() => setTela(0)} />
-            <MyButton icon={'edit'} color={`white`} onPress={() => [setVisibleModalEditarNome(true), console.log('Modal visível')]}/>
-            <MyButton icon={'check'} onPress={() => setTela(3)} />
+            <MyButton icon={'edit'} color={`white`} onPress={() => setVisibleModalEditarNome(true)}/>
+            <MyButton icon={'check'} onPress={() => nota ? setTela(4) : alert('É necessário digitar a nota!')} />
         </View>
         <Modal
             visible={visibleModalEditarNome}
