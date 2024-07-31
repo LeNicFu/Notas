@@ -7,7 +7,7 @@ import { ButtonList } from '../components/myButton'
 
 export default function Listas() {
     const { listaDeAlunosNotas, setTela, setFatorDeOrdenacao } = useContext(GlobalContext)
-    console.log('Lista:', listaDeAlunosNotas)
+
     return <View style={styles.container}>
         <View style={{ width: '100%', backgroundColor: 'white', position: 'absolute', top: 0 }}>
             <Text style={styles.texto2}>

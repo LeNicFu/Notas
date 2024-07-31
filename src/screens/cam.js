@@ -7,7 +7,7 @@ import { GlobalContext } from '../context'
 export default function MyCam() {
   const { setTela, setCodigo} = useContext(GlobalContext)
   const handleCodeScanned = (code) => {
-    // console.log(code, code.data)
+
     if (code.data.length > 0) {
       [
         setCodigo(code.data),

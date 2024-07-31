@@ -12,6 +12,7 @@ export default function ListaOrdenada() {
   useEffect(() => {
     Ordenadar()
   }, [])
+  console.log('Fator de Ordenação:', fatorDeOrdenacao)
 
   function Ordenadar() {
     if (fatorDeOrdenacao === 'nome') {
