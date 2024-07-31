@@ -9,7 +9,6 @@ import Listas from '../screens/listas'
 import ListaOrdenada from '../screens/listaOrdenada'
 import Editar from '../components/editar'
 
-
 export default function Manager() {
     const { tela } = useContext(GlobalContext)
     if (tela === 0) {

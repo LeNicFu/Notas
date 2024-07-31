@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { GlobalContext } from '../context'
-import styles from '../styles'
-import MyButton from './myButton'
-import { ExcluirNomeDb, GetList, Inserir } from '../data'
-import { ValorNota } from './functions'
-import { colors } from '../colors'
+import { GlobalContext } from '../../context'
+import styles from '../../styles'
+import MyButton from '../myButton'
+import { ApagarLista, ExcluirNomeDb, GetList, Inserir } from '../../data'
+import { ValorNota } from '../functions'
+import { colors } from '../../colors'
 
 
 export const ActionModalEditarNome = () => {
@@ -135,6 +135,50 @@ export const ActionModalExcluirNome = () => {
                 <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
                     <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalExcluirNome(false)} />
                     <MyButton icon={'trash'} color={'red'} onPress={() => [ExcluirNomeDb(id), setTela(6), setListaDeAlunosNotas(GetList()), setVisibleModalExcluirNome(false)]} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////
+export const ActionModalExcluirLista = () => {
+    const { setVisibleModalExcluirLista, setListaDeAlunosNotas } = useContext(GlobalContext)
+    const [confirmarEnvio, setConfirmarEnvio] =useState('')
+
+    const Confirma = () => {
+        if(confirmarEnvio.toUpperCase() === 'OLIMAT'){
+            setVisibleModalExcluirLista(false)
+            ApagarLista()
+            alert('A lista foi apagada!')
+        } else {
+            alert('É preciso digitar OLIMAT para confirmar.')
+        }
+    }
+
+
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalExcluirLista(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModal}
+            activeOpacity={1}
+        >
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+                <Text style={styles.texto2}>
+                    Ao confirmar, você excluirá toda a lista.{'\n'}
+                    Digite OLIMAT para confirmar
+                </Text>
+                <TextInput
+                    style={{width: '100%', textAlign: 'center', fontSize: 24}}
+                    placeholder='OLIMAT'
+                    onChangeText={newName => setConfirmarEnvio(newName.toUpperCase())}
+                    multiline={true}
+                />
+                <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
+                    <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalExcluirLista(false)} />
+                    <MyButton icon={'trash'} color={'red'} onPress={() => Confirma()} />
                 </View>
             </View>
         </TouchableOpacity>

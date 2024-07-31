@@ -19,6 +19,8 @@ export default function InfoProvider({ children }) {
     const [id, setId] = useState(null)
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
     const [visibleModalExcluirNome, setVisibleModalExcluirNome] = useState(false)
+    const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
+    const [visibleModalExcluirLista, setVisibleModalExcluirLista] = useState(false)
     
     
     const listaDeAlunos = obj
@@ -37,9 +39,11 @@ export default function InfoProvider({ children }) {
             fatorDeOrdenacao, setFatorDeOrdenacao,
             listaDeAlunosNotas, setListaDeAlunosNotas,
             visibleModalEditar, setVisibleModalEditar,
+            visibleModalEnviar, setVisibleModalEnviar,
             visibleModalConfirmar, setVisibleModalConfirmar,
             visibleModalEditarNome, setVisibleModalEditarNome,
             visibleModalExcluirNome, setVisibleModalExcluirNome,
+            visibleModalExcluirLista, setVisibleModalExcluirLista,
             listaDeAlunos,
         }}>
             {children}

@@ -58,7 +58,7 @@ export default function ListaOrdenada() {
   ///////////////////////////////////////////////////////////
   function EstiloLista(codigo, nome, nota, id) {
     return <TouchableOpacity style={styles.containerListas}
-      onPress={() => [ setMunicipio(EncontrarEscola(codigo).Municipio), setEscola(EncontrarEscola(codigo).NomeDaEscola), setAno(EncontrarEscola(codigo).Ano), setNome(nome), setCodigo(codigo), setNota(nota), setId(id), setTela(7)]}
+      onPress={() => [setMunicipio(EncontrarEscola(codigo).Municipio), setEscola(EncontrarEscola(codigo).NomeDaEscola), setAno(EncontrarEscola(codigo).Ano), setNome(nome), setCodigo(codigo), setNota(nota), setId(id), setTela(7)]}
     >
       <Text style={styles.texto1}>
         {codigo}
@@ -83,11 +83,11 @@ export default function ListaOrdenada() {
       <Text style={[styles.texto3, { maxWidth: '70%' }]}>
         {`Total de alunos:   ${alunos.length}`}
       </Text>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => setTela(5)}
       >
         <Entypo name={'back'} size={50} color='white' />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
 
     <FlatList
