@@ -31,3 +31,16 @@ export function ApagarLista() {
     `)
     return console.log('A lista foi apagada.')
 }
+
+
+export function EditarNomeDb(nome, id) {
+    return db.runSync('UPDATE myNotas SET nome = ? WHERE id = ?', nome, id)
+}
+
+export function EditarNotaDb(nota, id) {
+    return db.runSync('UPDATE myNotas SET nota = ? WHERE id = ?', nota, id)
+}
+
+export function ExcluirNomeDb(id) {
+    return  db.runSync('DELETE FROM myNotas WHERE id = $id', { $id: id })
+ }

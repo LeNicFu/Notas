@@ -6,7 +6,9 @@ import Scanned from '../screens/scanned'
 import Notas from '../screens/notas'
 import Confirmacao from '../screens/confirmacao'
 import Listas from '../screens/listas'
-import Alfabetica from '../screens/listas/alfabetica'
+import ListaOrdenada from '../screens/listaOrdenada'
+import Editar from '../components/editar'
+
 
 export default function Manager() {
     const { tela } = useContext(GlobalContext)
@@ -22,7 +24,9 @@ export default function Manager() {
         return <Confirmacao />
     } else if (tela === 5) {
         return <Listas />
-    } else if (tela === 5.1) {
-        return <Alfabetica />
+    } else if (tela === 6) {
+        return <ListaOrdenada />
+    } else if (tela === 7) {
+        return <Editar />
     }
 }

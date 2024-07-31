@@ -15,32 +15,32 @@ export default function InfoProvider({ children }) {
     const [visibleModalEditarNome, setVisibleModalEditarNome] = useState(false)
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
     const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
-
+    const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
+    const [id, setId] = useState(null)
+    const [visibleModalEditar, setVisibleModalEditar] = useState(false)
+    const [visibleModalExcluirNome, setVisibleModalExcluirNome] = useState(false)
+    
+    
     const listaDeAlunos = obj
 
     return (
         <GlobalContext.Provider value={{
-            ano,
-            setAno,
-            tela,
-            setTela,
-            nome,
-            setNome,
-            nota,
-            setNota,
-            codigo,
-            setCodigo,
-            escola,
-            setEscola,
-            municipio,
-            setMunicipio,
+            id, setId,
+            ano, setAno,
+            tela, setTela,
+            // upDate, setUpDate,
+            nome, setNome,
+            nota, setNota,
+            codigo, setCodigo,
+            escola, setEscola,
+            municipio, setMunicipio,
+            fatorDeOrdenacao, setFatorDeOrdenacao,
+            listaDeAlunosNotas, setListaDeAlunosNotas,
+            visibleModalEditar, setVisibleModalEditar,
+            visibleModalConfirmar, setVisibleModalConfirmar,
+            visibleModalEditarNome, setVisibleModalEditarNome,
+            visibleModalExcluirNome, setVisibleModalExcluirNome,
             listaDeAlunos,
-            listaDeAlunosNotas,
-            setListaDeAlunosNotas,
-            visibleModalConfirmar,
-            setVisibleModalConfirmar,
-            visibleModalEditarNome,
-            setVisibleModalEditarNome,
         }}>
             {children}
         </GlobalContext.Provider>

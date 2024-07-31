@@ -2,17 +2,15 @@ import { useContext, useEffect } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../context'
 import styles from '../styles'
-import { ApagarLista, CriarMyNotas, GetList } from '../data'
+import { ApagarLista, CriarMyNotas, EditarNomeDb, EditarNotaDb, ExcluirNomeDb, GetList } from '../data'
 import { Entypo } from '@expo/vector-icons'
 
 console.log('------------------- HOME -------------------')
 
-// ApagarLista()
 CriarMyNotas()
-// GetList()
 
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, upDate } = useContext(GlobalContext)
 
     useEffect(() => {
         setListaDeAlunosNotas(GetList())

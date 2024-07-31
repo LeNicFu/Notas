@@ -6,6 +6,7 @@ import { GlobalContext } from '../context'
 import { ValorNota } from '../components/functions'
 import TituloTexto from '../components/tituloTexto'
 import { ActionModalEditarNome } from '../components/modais'
+import { colors } from '../colors'
 
 export default function Notas() {
     const { setTela, setNota, municipio, escola, ano, nome, codigo, nota,visibleModalEditarNome, setVisibleModalEditarNome} = useContext(GlobalContext)
@@ -27,7 +28,7 @@ export default function Notas() {
             />
         </View>
         <View style={{ width: '95%', flexDirection: 'row', justifyContent: 'space-around', paddingTop: '15%' }}>
-            <MyButton icon={'circle-with-cross'} color={'red'} onPress={() => setTela(0)} />
+            <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setTela(0)} />
             <MyButton icon={'edit'} color={`white`} onPress={() => setVisibleModalEditarNome(true)}/>
             <MyButton icon={'check'} onPress={() => nota ? setTela(4) : alert('É necessário digitar a nota!')} />
         </View>

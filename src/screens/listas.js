@@ -6,7 +6,7 @@ import { Entypo } from '@expo/vector-icons'
 import { ButtonList } from '../components/myButton'
 
 export default function Listas() {
-    const { listaDeAlunosNotas, setTela } = useContext(GlobalContext)
+    const { listaDeAlunosNotas, setTela, setFatorDeOrdenacao } = useContext(GlobalContext)
     console.log('Lista:', listaDeAlunosNotas)
     return <View style={styles.container}>
         <View style={{ width: '100%', backgroundColor: 'white', position: 'absolute', top: 0 }}>
@@ -15,14 +15,15 @@ export default function Listas() {
             </Text>
         </View>
         <TouchableOpacity
-            style={{ position: 'absolute', top: 50, right: 20 }}
+            style={{ position: 'absolute', top: 50, left: 20 }}
             onPress={() => setTela(0)}
         >
-            <Entypo name={'home'} size={50} color='green' />
+            <Entypo name={'home'} size={50} color='white' />
         </TouchableOpacity>
         <View style={{height: '60%', width: '100%', justifyContent: 'space-evenly', alignItems: 'center', }}>
-            <ButtonList text={'Ordem alfabética'} onPress={() => setTela(5.1)}/>
-            <ButtonList text={'Mais recentes'} />
+            <ButtonList text={'Ordem alfabética'} onPress={() => [setFatorDeOrdenacao('nome'), setTela(6)]}/>
+            <ButtonList text={'Mais recentes'} onPress={() => [setFatorDeOrdenacao('id'), setTela(6)]}/>
+            <ButtonList text={'Nota'} onPress={() => [setFatorDeOrdenacao('nota'), setTela(6)]}/>
         </View>
     </View>
 }
