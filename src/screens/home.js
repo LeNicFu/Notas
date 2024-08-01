@@ -4,13 +4,13 @@ import { GlobalContext } from '../context'
 import styles from '../styles'
 import { CriarMyNotas, GetList } from '../data'
 import { Entypo } from '@expo/vector-icons'
-import { ActionModalExcluirLista } from '../components/modais'
+import { ActionModalCodigoRepetido, ActionModalExcluirLista } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 
 console.log('------------------- HOME -------------------')
 
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido } = useContext(GlobalContext)
 
     useEffect(() => {
         CriarMyNotas()
@@ -67,6 +67,12 @@ export default function Home() {
             transparent={true}
         >
             <ActionModalAbrindoEmail />
+        </Modal>
+        <Modal
+            visible={visibleModalCodigoRepetido}
+            transparent={true}
+        >
+            <ActionModalCodigoRepetido />
         </Modal>
     </View>
 }

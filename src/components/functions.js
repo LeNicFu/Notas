@@ -47,3 +47,12 @@ export function EliminaZero(nota) {
     }
     return novaNota
 }
+
+export function EncontrarCodigo(codigo, listaDeAlunosNotas) {
+    const itemComOCodigo = listaDeAlunosNotas.find(item => item.codigo == codigo)
+    if (itemComOCodigo) {
+        return true
+    } else {
+        return false
+    }
+}

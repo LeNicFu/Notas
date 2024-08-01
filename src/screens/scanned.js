@@ -3,18 +3,23 @@ import styles from '../styles'
 import MyButton from '../components/myButton'
 import { useContext, useEffect } from 'react'
 import { GlobalContext } from '../context'
-import { EncontrarEscola, EncontrarNome } from '../components/functions'
+import { EncontrarCodigo, EncontrarEscola, EncontrarNome } from '../components/functions'
 import TituloTexto from '../components/tituloTexto'
 
 export default function Scanned() {
-    const { setTela, codigo, nome, setNome, ano, setAno, municipio, setMunicipio, escola, setEscola, setNota } = useContext(GlobalContext)
+    const { setTela, codigo, nome, setNome, ano, setAno, municipio, setMunicipio, escola, setEscola, setNota, listaDeAlunosNotas, setVisibleModalCodigoRepetido } = useContext(GlobalContext)
 
     useEffect(() => {
-        setNota(null)
-        setNome(EncontrarNome(codigo))
-        setAno(EncontrarEscola(codigo).Ano)
-        setMunicipio(EncontrarEscola(codigo).Municipio)
-        setEscola(EncontrarEscola(codigo).NomeDaEscola)
+        if(EncontrarCodigo(codigo, listaDeAlunosNotas)) {
+            setTela(0)
+            setVisibleModalCodigoRepetido(true)
+        } else {
+            setNota(null)
+            setNome(EncontrarNome(codigo))
+            setAno(EncontrarEscola(codigo).Ano)
+            setMunicipio(EncontrarEscola(codigo).Municipio)
+            setEscola(EncontrarEscola(codigo).NomeDaEscola)
+        }
     }, [])
 
     return <View style={[styles.container, { paddingTop: 40 }]}>

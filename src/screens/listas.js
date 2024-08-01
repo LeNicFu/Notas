@@ -24,6 +24,7 @@ export default function Listas() {
             <ButtonList text={'Ordem alfabética'} onPress={() => [setFatorDeOrdenacao('nome'), setTela(6)]}/>
             <ButtonList text={'Mais recentes'} onPress={() => [setFatorDeOrdenacao('id'), setTela(6)]}/>
             <ButtonList text={'Nota'} onPress={() => [setFatorDeOrdenacao('nota'), setTela(6)]}/>
+            <ButtonList text={'Código'} onPress={() => [setFatorDeOrdenacao('codigo'), setTela(6)]}/>
         </View>
     </View>
 }

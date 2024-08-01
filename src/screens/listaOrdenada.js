@@ -48,6 +48,18 @@ export default function ListaOrdenada() {
           return 0
         }
       })
+    } else if (fatorDeOrdenacao === 'codigo') {
+      alunos.sort(function (a, b) {
+        if (a.codigo > b.codigo) {
+          return 1
+        }
+        if (a.codigo < b.codigo) {
+          return -1
+        }
+        if (a.codigo = b.codigo) {
+          return 0
+        }
+      })
     }
   }
 

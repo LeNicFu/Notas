@@ -5,7 +5,7 @@ import MyButton from '../components/myButton'
 import { GlobalContext } from '../context'
 
 export default function MyCam() {
-  const { setTela, setCodigo} = useContext(GlobalContext)
+  const { setTela, setCodigo } = useContext(GlobalContext)
   const handleCodeScanned = (code) => {
 
     if (code.data.length > 0) {

@@ -184,3 +184,27 @@ export const ActionModalExcluirLista = () => {
         </TouchableOpacity>
     </TouchableOpacity>
 }
+
+/////////////////////////////////////////////////////////////////
+export const ActionModalCodigoRepetido = () => {
+    const { setVisibleModalCodigoRepetido, codigo } = useContext(GlobalContext)
+
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalCodigoRepetido(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModal}
+            activeOpacity={1}
+        >
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+                <Text style={styles.texto2}>
+                   O código {codigo} já foi registrado anteriormente!
+                </Text>
+                <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
+                    <MyButton icon={'check'} onPress={() => setVisibleModalCodigoRepetido(false)} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
