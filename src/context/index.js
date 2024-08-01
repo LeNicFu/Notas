@@ -5,23 +5,23 @@ export const GlobalContext = createContext({})
 const obj = require('../data/listaAlunos.json')
 
 export default function InfoProvider({ children }) {
-    const [tela, setTela] = useState(0)
-    const [codigo, setCodigo] = useState(null)
-    const [nome, setNome] = useState(null)
-    const [ano, setAno] = useState(null)
-    const [nota, setNota] = useState(null)
-    const [municipio, setMunicipio] = useState(null)
-    const [escola, setEscola] = useState(null)
-    const [visibleModalEditarNome, setVisibleModalEditarNome] = useState(false)
-    const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
-    const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
-    const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
     const [id, setId] = useState(null)
+    const [tela, setTela] = useState(0)
+    const [ano, setAno] = useState(null)
+    const [nome, setNome] = useState(null)
+    const [nota, setNota] = useState(null)
+    const [codigo, setCodigo] = useState(null)
+    const [escola, setEscola] = useState(null)
+    const [municipio, setMunicipio] = useState(null)
+    const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
+    const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
-    const [visibleModalExcluirNome, setVisibleModalExcluirNome] = useState(false)
     const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
+    const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
+    const [visibleModalEditarNome, setVisibleModalEditarNome] = useState(false)
+    const [visibleModalExcluirNome, setVisibleModalExcluirNome] = useState(false)
     const [visibleModalExcluirLista, setVisibleModalExcluirLista] = useState(false)
-    
+    const [visibleModalAbrindoEmail, setVisibleModalAbrindoEmail] = useState(false)
     
     const listaDeAlunos = obj
 
@@ -30,7 +30,6 @@ export default function InfoProvider({ children }) {
             id, setId,
             ano, setAno,
             tela, setTela,
-            // upDate, setUpDate,
             nome, setNome,
             nota, setNota,
             codigo, setCodigo,
@@ -44,6 +43,7 @@ export default function InfoProvider({ children }) {
             visibleModalEditarNome, setVisibleModalEditarNome,
             visibleModalExcluirNome, setVisibleModalExcluirNome,
             visibleModalExcluirLista, setVisibleModalExcluirLista,
+            visibleModalAbrindoEmail, setVisibleModalAbrindoEmail,
             listaDeAlunos,
         }}>
             {children}

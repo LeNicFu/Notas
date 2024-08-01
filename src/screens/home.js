@@ -1,24 +1,37 @@
 import { useContext, useEffect } from 'react'
-import { Image, Modal, TouchableOpacity, View } from 'react-native'
+import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../context'
 import styles from '../styles'
 import { CriarMyNotas, GetList } from '../data'
 import { Entypo } from '@expo/vector-icons'
 import { ActionModalExcluirLista } from '../components/modais'
-import { ActionModalEnviar } from '../components/modais/enviar'
+import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 
 console.log('------------------- HOME -------------------')
 
-CriarMyNotas()
-
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas } = useContext(GlobalContext)
 
     useEffect(() => {
+        CriarMyNotas()
         setListaDeAlunosNotas(GetList())
     }, [])
 
     return <View style={styles.container}>
+        <View style={{position: 'absolute', top: 50, center: 0}}>
+            <Text style={[styles.texto2, { color: 'white' }]}>
+                Total{'\n'}
+                {listaDeAlunosNotas.length}
+            </Text>
+        </View>
+        <TouchableOpacity
+            onPress={() => setTela(1)}
+            style={{ backgroundColor: 'white', borderRadius: 24 }}
+        >
+            <Image
+                style={{ width: 200, height: 200 }}
+                source={require('../../assets/icons8-barcode-scanner-100.png')} />
+        </TouchableOpacity>
         <TouchableOpacity
             style={{ position: 'absolute', top: 50, right: 20 }}
             onPress={() => setTela(5)}
@@ -33,17 +46,9 @@ export default function Home() {
         </TouchableOpacity>
         <TouchableOpacity
             style={{ position: 'absolute', bottom: 30, center: 0 }}
-            onPress={() => setVisibleModalExcluirLista(true)}
+            onPress={() => [setVisibleModalExcluirLista(true), setListaDeAlunosNotas([])]}
         >
             <Entypo name={'trash'} size={60} color='red' />
-        </TouchableOpacity>
-        <TouchableOpacity
-            onPress={() => setTela(1)}
-            style={{ backgroundColor: 'white', borderRadius: 24 }}
-        >
-            <Image
-                style={{ width: 200, height: 200 }}
-                source={require('../../assets/icons8-barcode-scanner-100.png')} />
         </TouchableOpacity>
         <Modal
             visible={visibleModalEnviar}
@@ -56,6 +61,12 @@ export default function Home() {
             transparent={true}
         >
             <ActionModalExcluirLista />
+        </Modal>
+        <Modal
+            visible={visibleModalAbrindoEmail}
+            transparent={true}
+        >
+            <ActionModalAbrindoEmail />
         </Modal>
     </View>
 }

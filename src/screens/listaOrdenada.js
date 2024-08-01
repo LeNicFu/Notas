@@ -9,11 +9,8 @@ export default function ListaOrdenada() {
   const { listaDeAlunosNotas, setTela, fatorDeOrdenacao, setMunicipio, setEscola, setAno, setNome, setCodigo, setNota, setId } = useContext(GlobalContext)
   const [alunos, setAlunos] = useState(listaDeAlunosNotas)
 
-  useEffect(() => {
-    Ordenadar()
-  }, [])
-  console.log('Fator de Ordenação:', fatorDeOrdenacao)
-
+  Ordenadar()
+  
   function Ordenadar() {
     if (fatorDeOrdenacao === 'nome') {
       alunos.sort(function (a, b) {
@@ -84,11 +81,11 @@ export default function ListaOrdenada() {
       <Text style={[styles.texto3, { maxWidth: '70%' }]}>
         {`Total de alunos:   ${alunos.length}`}
       </Text>
-      {/* <TouchableOpacity
+      <TouchableOpacity
         onPress={() => setTela(5)}
       >
         <Entypo name={'back'} size={50} color='white' />
-      </TouchableOpacity> */}
+      </TouchableOpacity>
     </View>
 
     <FlatList
