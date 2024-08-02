@@ -2,23 +2,45 @@ import { useContext, useEffect } from 'react'
 import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../context'
 import styles from '../styles'
-import { CriarMyNotas, GetList } from '../data'
+import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { Entypo } from '@expo/vector-icons'
 import { ActionModalCodigoRepetido, ActionModalExcluirLista } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
+import { ActionModalSenha } from '../../security'
 
 console.log('------------------- HOME -------------------')
 
+
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
 
     useEffect(() => {
-        CriarMyNotas()
-        setListaDeAlunosNotas(GetList())
-    }, [])
+        const initialize = async () => {
+            await CriarMyNotas();
+            const lista = await GetList();
+            setListaDeAlunosNotas(lista);
+
+            await CriarMySenha();
+            const senhaObtida = await GetSenha();
+
+            if (senhaVerificada === false) {
+                if (senhaObtida.length === 0) {
+                    console.log('??????????????????');
+                    setVisibleModalSenha(true);
+                    setSenhaVerificada(true);
+                } else {
+                    console.log(senhaObtida);
+                    setSenhaVerificada(true);
+                }
+            }
+        };
+
+        initialize();
+    }, []);
+
 
     return <View style={styles.container}>
-        <View style={{position: 'absolute', top: 50, center: 0}}>
+        <View style={{ position: 'absolute', top: 50, center: 0 }}>
             <Text style={[styles.texto2, { color: 'white' }]}>
                 Total{'\n'}
                 {listaDeAlunosNotas.length}
@@ -73,6 +95,12 @@ export default function Home() {
             transparent={true}
         >
             <ActionModalCodigoRepetido />
+        </Modal>
+        <Modal
+            visible={visibleModalSenha}
+            transparent={true}
+        >
+            <ActionModalSenha />
         </Modal>
     </View>
 }

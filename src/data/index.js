@@ -9,6 +9,30 @@ export function CriarMyNotas() {
     `)
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+export function CriarMySenha() {
+    db.execSync(`
+        PRAGMA journal_mode = WAL;
+        CREATE TABLE IF NOT EXISTS mySenha (id INTEGER PRIMARY KEY NOT NULL, senha TEXT NOT NULL);
+    `)
+}
+
+export function InserirSenha(senha) {
+    db.execSync(`
+        INSERT INTO mySenha (senha) VALUES ('${senha}');
+    `)
+}
+
+export function GetSenha() {
+    const lista = []
+    const allRows = db.getAllSync('SELECT * FROM mySenha');
+    for (const row of allRows) {
+        lista.push({ id: row.id, senha: row.senha })
+    }
+    return lista
+}
+///////////////////////////////////////////////////////////////////////////////////////
+
 export function Inserir(codigo, nome, nota) {
     db.execSync(`
         INSERT INTO myNotas (codigo, nome, nota) VALUES (${codigo}, '${nome}', ${nota});
@@ -20,7 +44,7 @@ export function GetList() {
     const lista = []
     const allRows = db.getAllSync('SELECT * FROM myNotas');
     for (const row of allRows) {
-        lista.push({id: row.id, codigo: row.codigo, nome: row.nome, nota: row.nota})
+        lista.push({ id: row.id, codigo: row.codigo, nome: row.nome, nota: row.nota })
     }
     return lista
 }
@@ -42,5 +66,5 @@ export function EditarNotaDb(nota, id) {
 }
 
 export function ExcluirNomeDb(id) {
-    return  db.runSync('DELETE FROM myNotas WHERE id = $id', { $id: id })
- }
+    return db.runSync('DELETE FROM myNotas WHERE id = $id', { $id: id })
+}
