@@ -6,7 +6,7 @@ import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { Entypo } from '@expo/vector-icons'
 import { ActionModalCodigoRepetido, ActionModalExcluirLista } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
-import { ActionModalSenha } from '../../security'
+import { ActionModalSenha } from '../components/modais/senha'
 
 console.log('------------------- HOME -------------------')
 

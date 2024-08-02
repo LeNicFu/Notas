@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react'
-import { GlobalContext } from '../src/context'
+import { GlobalContext } from '../../context'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import styles from '../src/styles'
-import MyButton from '../src/components/myButton'
-import { InserirSenha } from '../src/data'
+import styles from '../../styles'
+import MyButton from '../myButton'
+import { InserirSenha } from '../../data'
 
 import {senhaDeAcesso} from '../../../security'
 
