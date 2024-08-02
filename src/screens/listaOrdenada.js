@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { GlobalContext } from '../context'
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import styles from '../styles'
@@ -62,8 +62,6 @@ export default function ListaOrdenada() {
       })
     }
   }
-
-
 
   ///////////////////////////////////////////////////////////
   function EstiloLista(codigo, nome, nota, id) {

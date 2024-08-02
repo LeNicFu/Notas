@@ -10,7 +10,6 @@ import { ActionModalSenha } from '../components/modais/senha'
 
 console.log('------------------- HOME -------------------')
 
-
 export default function Home() {
     const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
 

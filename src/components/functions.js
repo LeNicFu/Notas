@@ -1,16 +1,5 @@
-const codigoEscolaAno = require('../data/paginaAno.json')
-const lista = require('../data/listaAlunos.json')
-
-export function EncontrarNome(codigo) {
-    const itemComOCodigo = lista.find(item => item.codigo == codigo)
-    if (itemComOCodigo) {
-        return itemComOCodigo.nome
-    } else if (codigo >= 1 && codigo <= codigoEscolaAno[codigoEscolaAno.length - 1].Ano9b) {
-        return ''
-    } else {
-        return 'O código está ERRADO!'
-    }
-}
+export const codigoEscolaAno = require('../data/paginaAno.json')
+export const lista = require('../data/listaAlunos.json')
 
 export function EncontrarEscola(codigo) {
     let dadosCodigo = {}
