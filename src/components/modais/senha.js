@@ -4,8 +4,7 @@ import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from '../../styles'
 import MyButton from '../myButton'
 import { InserirSenha } from '../../data'
-
-import {senhaDeAcesso} from '../../../security'
+import {senhaDeAcesso} from '../../../password'
 
 export const ActionModalSenha = () => {
     const { setVisibleModalSenha } = useContext(GlobalContext)
