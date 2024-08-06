@@ -6,12 +6,13 @@ import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { Entypo } from '@expo/vector-icons'
 import { ActionModalCodigoRepetido, ActionModalExcluirLista } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
-import { ActionModalSenha } from '../components/modais/senha'
+// import { ActionModalSenha } from '../components/modais/senha'
 
 console.log('------------------- HOME -------------------')
 
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha } = useContext(GlobalContext)
+    // const { setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
 
     useEffect(() => {
         const initialize = async () => {
@@ -19,19 +20,19 @@ export default function Home() {
             const lista = await GetList();
             setListaDeAlunosNotas(lista);
 
-            await CriarMySenha();
-            const senhaObtida = await GetSenha();
+            // await CriarMySenha();
+            // const senhaObtida = await GetSenha();
 
-            if (senhaVerificada === false) {
-                if (senhaObtida.length === 0) {
-                    console.log('??????????????????');
-                    setVisibleModalSenha(true);
-                    setSenhaVerificada(true);
-                } else {
-                    console.log(senhaObtida);
-                    setSenhaVerificada(true);
-                }
-            }
+            // if (senhaVerificada === false) {
+            //     if (senhaObtida.length === 0) {
+            //         console.log('??????????????????');
+            //         setVisibleModalSenha(true);
+            //         setSenhaVerificada(true);
+            //     } else {
+            //         console.log(senhaObtida);
+            //         setSenhaVerificada(true);
+            //     }
+            // }
         };
 
         initialize();
@@ -95,11 +96,11 @@ export default function Home() {
         >
             <ActionModalCodigoRepetido />
         </Modal>
-        <Modal
+        {/* <Modal
             visible={visibleModalSenha}
             transparent={true}
         >
             <ActionModalSenha />
-        </Modal>
+        </Modal> */}
     </View>
 }

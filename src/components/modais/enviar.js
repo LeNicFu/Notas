@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../../context'
 import styles from '../../styles'
 import MyButton from '../myButton'
@@ -7,8 +7,11 @@ import { colors } from '../../colors'
 import * as MailComposer from 'expo-mail-composer'
 
 export const ActionModalEnviar = () => {
-    const { setVisibleModalEnviar, listaDeAlunosNotas, setListaDeAlunosNotas, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
+    const { setVisibleModalEnviar, listaDeAlunosNotas, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [alunos, setAlunos] = useState(listaDeAlunosNotas)
+    const [senha, setSenha] = useState('')
+    const passWord = 'OLIM@TUESC'
+
 
     useEffect(() => {
         OrdenadarNotas()
@@ -44,6 +47,17 @@ export const ActionModalEnviar = () => {
         setTimeout(() => setVisibleModalAbrindoEmail(false), 2000)
     }
 
+    const confirmar = (senha) => {
+        if (senha == passWord) {
+            setVisibleModalEnviar(false)
+            enviarEmail()
+            setVisibleModalAbrindoEmail(true)
+            enviando()
+        } else {
+            alert('Senha incorreta!')
+        }
+    }
+
     return <TouchableOpacity
         style={styles.modal}n
         onPress={() => setVisibleModalEnviar(false)}
@@ -56,9 +70,14 @@ export const ActionModalEnviar = () => {
                 <Text style={styles.texto2}>
                     Enviar a lista por e-mail
                 </Text>
+                <TextInput
+                    style={styles.nota}
+                    placeholder='Digite a senha'
+                    onChangeText={newSenha => setSenha(newSenha.toUpperCase())}
+                />
                 <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
                     <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalEnviar(false)} />
-                    <MyButton icon={'mail'} onPress={() => [setVisibleModalEnviar(false), enviarEmail(), setVisibleModalAbrindoEmail(true), enviando()]} />
+                    <MyButton icon={'mail'} onPress={() => confirmar(senha)} />
                 </View>
             </View>
         </TouchableOpacity>

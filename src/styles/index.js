@@ -47,7 +47,8 @@ export default StyleSheet.create({
     nota: {
         fontSize: 24,
         textAlign: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        width: '80%'
     },
     modal: {
         flex: 1,

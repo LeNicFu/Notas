@@ -10,27 +10,27 @@ export function CriarMyNotas() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-export function CriarMySenha() {
-    db.execSync(`
-        PRAGMA journal_mode = WAL;
-        CREATE TABLE IF NOT EXISTS mySenha (id INTEGER PRIMARY KEY NOT NULL, senha TEXT NOT NULL);
-    `)
-}
+// export function CriarMySenha() {
+//     db.execSync(`
+//         PRAGMA journal_mode = WAL;
+//         CREATE TABLE IF NOT EXISTS mySenha (id INTEGER PRIMARY KEY NOT NULL, senha TEXT NOT NULL);
+//     `)
+// }
 
-export function InserirSenha(senha) {
-    db.execSync(`
-        INSERT INTO mySenha (senha) VALUES ('${senha}');
-    `)
-}
+// export function InserirSenha(senha) {
+//     db.execSync(`
+//         INSERT INTO mySenha (senha) VALUES ('${senha}');
+//     `)
+// }
 
-export function GetSenha() {
-    const lista = []
-    const allRows = db.getAllSync('SELECT * FROM mySenha');
-    for (const row of allRows) {
-        lista.push({ id: row.id, senha: row.senha })
-    }
-    return lista
-}
+// export function GetSenha() {
+//     const lista = []
+//     const allRows = db.getAllSync('SELECT * FROM mySenha');
+//     for (const row of allRows) {
+//         lista.push({ id: row.id, senha: row.senha })
+//     }
+//     return lista
+// }
 ///////////////////////////////////////////////////////////////////////////////////////
 
 export function Inserir(codigo, nome, nota) {

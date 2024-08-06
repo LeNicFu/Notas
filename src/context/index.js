@@ -13,11 +13,10 @@ export default function InfoProvider({ children }) {
     const [codigo, setCodigo] = useState(null)
     const [escola, setEscola] = useState(null)
     const [municipio, setMunicipio] = useState(null)
-    const [listaSenha, setListaSenha] = useState([])
-    const [senhaVerificada, setSenhaVerificada] = useState(false)
+    // const [senhaVerificada, setSenhaVerificada] = useState(false)
     const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
     const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
-    const [visibleModalSenha, setVisibleModalSenha] = useState(false)
+    // const [visibleModalSenha, setVisibleModalSenha] = useState(false)
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
     const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
@@ -39,10 +38,9 @@ export default function InfoProvider({ children }) {
             codigo, setCodigo,
             escola, setEscola,
             municipio, setMunicipio,
-            listaSenha, setListaSenha,
-            senhaVerificada, setSenhaVerificada,
+            // senhaVerificada, setSenhaVerificada,
             fatorDeOrdenacao, setFatorDeOrdenacao,
-            visibleModalSenha, setVisibleModalSenha,
+            // visibleModalSenha, setVisibleModalSenha,
             listaDeAlunosNotas, setListaDeAlunosNotas,
             visibleModalEditar, setVisibleModalEditar,
             visibleModalEnviar, setVisibleModalEnviar,
