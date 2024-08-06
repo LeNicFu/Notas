@@ -14,8 +14,6 @@ export default function Home() {
     const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha } = useContext(GlobalContext)
     // const { setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
     
-    console.log(listaDeAlunosNotas)
-
     useEffect(() => {
         const initialize = async () => {
             await CriarMyNotas();

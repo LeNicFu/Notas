@@ -3,7 +3,7 @@ import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../../context'
 import styles from '../../styles'
 import MyButton from '../myButton'
-import { ApagarLista, ExcluirNomeDb, GetList, Inserir } from '../../data'
+import { ApagarLista, CriarMyNotas, ExcluirNomeDb, GetList, Inserir } from '../../data'
 import { ValorNota } from '../functions'
 import { colors } from '../../colors'
 
@@ -150,6 +150,7 @@ export const ActionModalExcluirLista = () => {
         if(confirmarEnvio.toUpperCase() === 'OLIMAT'){
             setVisibleModalExcluirLista(false)
             ApagarLista()
+            CriarMyNotas()
             setListaDeAlunosNotas([])
             alert('A lista foi apagada!')
         } else {
