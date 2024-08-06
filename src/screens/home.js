@@ -13,6 +13,8 @@ console.log('------------------- HOME -------------------')
 export default function Home() {
     const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha } = useContext(GlobalContext)
     // const { setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
+    
+    console.log(listaDeAlunosNotas)
 
     useEffect(() => {
         const initialize = async () => {
@@ -68,7 +70,7 @@ export default function Home() {
         </TouchableOpacity>
         <TouchableOpacity
             style={{ position: 'absolute', bottom: 30, center: 0 }}
-            onPress={() => [setVisibleModalExcluirLista(true), setListaDeAlunosNotas([])]}
+            onPress={() => setVisibleModalExcluirLista(true)}
         >
             <Entypo name={'trash'} size={60} color='red' />
         </TouchableOpacity>

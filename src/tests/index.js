@@ -1,6 +1,11 @@
-const enviando = () => {
-  console.log('Iniciando')
-  setTimeout(console.log('Fim'), 2000)
-}
+// const classificado = (nota) => {
+//   return nota >= 8 ? true : false
+// }
 
-enviando()
+// const resultado = Classificado('9')
+const nota = '7.99'
+const classificado = nota >= 8 ? true : false
+
+console.log(classificado)
+
+// console.log(resultado)

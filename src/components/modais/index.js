@@ -150,6 +150,7 @@ export const ActionModalExcluirLista = () => {
         if(confirmarEnvio.toUpperCase() === 'OLIMAT'){
             setVisibleModalExcluirLista(false)
             ApagarLista()
+            setListaDeAlunosNotas([])
             alert('A lista foi apagada!')
         } else {
             alert('É preciso digitar OLIMAT para confirmar.')

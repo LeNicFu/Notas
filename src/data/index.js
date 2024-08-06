@@ -5,7 +5,7 @@ const db = SQLite.openDatabaseSync('dbNotas');
 export function CriarMyNotas() {
     db.execSync(`
         PRAGMA journal_mode = WAL;
-        CREATE TABLE IF NOT EXISTS myNotas (id INTEGER PRIMARY KEY NOT NULL, codigo INTEGER, nome TEXT NOT NULL, nota INTEGER);
+        CREATE TABLE IF NOT EXISTS myNotas (id INTEGER PRIMARY KEY NOT NULL, codigo INTEGER, nome TEXT NOT NULL, nota INTEGER, classificado INTEGER);
     `)
 }
 
@@ -34,17 +34,18 @@ export function CriarMyNotas() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 export function Inserir(codigo, nome, nota) {
+    const classificado = nota >= 8 ? 1 : 0
     db.execSync(`
-        INSERT INTO myNotas (codigo, nome, nota) VALUES (${codigo}, '${nome}', ${nota});
+        INSERT INTO myNotas (codigo, nome, nota, classificado) VALUES (${codigo}, '${nome}', ${nota}, ${classificado});
     `)
-    console.log(`Foram inseridos ao db myNotas o nome ${nome}, de código ${codigo}, com a nota ${nota}`)
+    console.log(`Foram inseridos ao db myNotas o nome ${nome}, de código ${codigo}, com a nota ${nota}.`)
 }
 
 export function GetList() {
     const lista = []
     const allRows = db.getAllSync('SELECT * FROM myNotas');
     for (const row of allRows) {
-        lista.push({ id: row.id, codigo: row.codigo, nome: row.nome, nota: row.nota })
+        lista.push({ id: row.id, codigo: row.codigo, nome: row.nome, nota: row.nota, classificado: row.classificado })
     }
     return lista
 }
