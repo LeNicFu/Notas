@@ -10,7 +10,7 @@ export default function ListaOrdenada() {
   const [alunos, setAlunos] = useState(listaDeAlunosNotas)
 
   Ordenadar()
-  
+
   function Ordenadar() {
     if (fatorDeOrdenacao === 'nome') {
       alunos.sort(function (a, b) {
@@ -68,9 +68,14 @@ export default function ListaOrdenada() {
     return <TouchableOpacity style={styles.containerListas}
       onPress={() => [setMunicipio(EncontrarEscola(codigo).Municipio), setEscola(EncontrarEscola(codigo).NomeDaEscola), setAno(EncontrarEscola(codigo).Ano), setNome(nome), setCodigo(codigo), setNota(nota), setId(id), setTela(7)]}
     >
-      <Text style={styles.texto1}>
-        {codigo}
-      </Text>
+      <View>
+        <Text style={styles.texto1}>
+          {codigo}
+        </Text>
+        <Text style={[styles.texto1, {fontSize: 16}]}>
+          {EncontrarEscola(codigo).Ano}
+        </Text>
+      </View>
       <Text style={[styles.texto1, { alignContent: 'center', maxWidth: '70%' }]}>
         {nome}
       </Text>
