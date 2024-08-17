@@ -38,12 +38,28 @@ export default function Home() {
         initialize();
     }, []);
 
+    console.log(listaDeAlunosNotas)
+
+    const totais = () => {
+        const total = listaDeAlunosNotas.length
+        let classificados = 0
+        listaDeAlunosNotas.forEach(item => classificados += item.classificado)
+        // for (let i = 0; i < listaDeAlunosNotas.length; i++) {
+        //     if ()
+        // }
+        return {total: total, classificados: classificados, naoClassificados: total - classificados}
+    }
 
     return <View style={styles.container}>
         <View style={{ position: 'absolute', top: 50, center: 0 }}>
             <Text style={[styles.texto2, { color: 'white' }]}>
-                Total{'\n'}
-                {listaDeAlunosNotas.length}
+                Total: {totais().total}
+            </Text>
+            <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
+                C: {totais().classificados}
+            </Text>
+            <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
+                NC: {totais().naoClassificados}
             </Text>
         </View>
         <TouchableOpacity

@@ -694,5 +694,29 @@
     "Ano8b": 16751,
     "Ano9a": 16752,
     "Ano9b": 16877
+  },
+  {
+    "Municipio": "Indefinido",
+    "NomeDaEscola": "Indefinido",
+    "Ano6a": 16877.001,
+    "Ano6b": 16877.002,
+    "Ano7a": 16877.003,
+    "Ano7b": 16877.004,
+    "Ano8a": 16878,
+    "Ano8b": 16900,
+    "Ano9a": 16900.001,
+    "Ano9b": 16900.002
+  },
+  {
+    "Municipio": "Canavieiras",
+    "NomeDaEscola": "Colégio Municipal Osmário Batista",
+    "Ano6a": 16900.003,
+    "Ano6b": 16900.004,
+    "Ano7a": 16900.005,
+    "Ano7b": 16900.006,
+    "Ano8a": 16901,
+    "Ano8b": 17000,
+    "Ano9a": 17000.001,
+    "Ano9b": 17000.002
   }
 ]

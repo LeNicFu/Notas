@@ -12,8 +12,6 @@ export default function Scanned() {
 
     const [proximaTela, setProximaTela] = useState(true)
 
-    console.log('PróximaTela:', proximaTela)
-
     useEffect(() => {
         if (EncontrarCodigo(codigo, listaDeAlunosNotas)) {
             setTela(0)
