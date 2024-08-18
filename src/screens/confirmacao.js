@@ -9,7 +9,7 @@ import { Inserir } from '../data'
 import { EliminaZero } from '../components/functions'
 
 export default function Confirmacao() {
-    const { municipio, escola, ano, nome, codigo, nota, setTela, visibleModalConfirmar, setVisibleModalConfirmar, setNota } = useContext(GlobalContext)
+    const { municipio, escola, ano, nome, codigo, nota, setTela, visibleModalConfirmar, setVisibleModalConfirmar, setNota, setVisibleModalDadosSalvos } = useContext(GlobalContext)
 
     useEffect(() => {
         setNota(EliminaZero(nota))
@@ -36,7 +36,7 @@ export default function Confirmacao() {
             <View style={{ backgroundColor: 'white', borderRadius: 12 }}>
                 <MyButton icon={'check'} onPress={() =>
                     nome ?
-                        [setTela(0), alert('Aluno e nota inseridos!'), Inserir(codigo, nome, nota)]
+                        [setTela(0), setVisibleModalDadosSalvos(true), Inserir(codigo, nome, nota)]
                         : setVisibleModalConfirmar(true)
                 } />
             </View>

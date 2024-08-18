@@ -22,10 +22,11 @@ export default function InfoProvider({ children }) {
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
     const [visibleModalEditarNome, setVisibleModalEditarNome] = useState(false)
     const [visibleModalExcluirNome, setVisibleModalExcluirNome] = useState(false)
+    const [visibleModalDadosSalvos, setVisibleModalDadosSalvos] = useState(false)
     const [visibleModalExcluirLista, setVisibleModalExcluirLista] = useState(false)
     const [visibleModalAbrindoEmail, setVisibleModalAbrindoEmail] = useState(false)
     const [visibleModalCodigoRepetido, setVisibleModalCodigoRepetido] = useState(false)
-    
+
     const listaDeAlunos = obj
 
     return (
@@ -47,6 +48,7 @@ export default function InfoProvider({ children }) {
             visibleModalConfirmar, setVisibleModalConfirmar,
             visibleModalEditarNome, setVisibleModalEditarNome,
             visibleModalExcluirNome, setVisibleModalExcluirNome,
+            visibleModalDadosSalvos, setVisibleModalDadosSalvos,
             visibleModalExcluirLista, setVisibleModalExcluirLista,
             visibleModalAbrindoEmail, setVisibleModalAbrindoEmail,
             visibleModalCodigoRepetido, setVisibleModalCodigoRepetido,

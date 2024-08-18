@@ -36,7 +36,7 @@ export function CriarMyNotas() {
 export function Inserir(codigo, nome, nota) {
     const classificado = nota >= 8 ? 1 : 0
     db.execSync(`
-        INSERT INTO myNotas (codigo, nome, nota, classificado) VALUES (${codigo}, '${nome}', ${nota}, ${classificado});
+        INSERT INTO myNotas (codigo, nome, nota, classificado) VALUES (${codigo}, "${nome}", ${nota}, ${classificado});
     `)
     console.log(`Foram inseridos ao db myNotas o nome ${nome}, de código ${codigo}, com a nota ${nota}.`)
 }

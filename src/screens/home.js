@@ -4,14 +4,15 @@ import { GlobalContext } from '../context'
 import styles from '../styles'
 import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { Entypo } from '@expo/vector-icons'
-import { ActionModalCodigoRepetido, ActionModalExcluirLista } from '../components/modais'
+import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLista } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 // import { ActionModalSenha } from '../components/modais/senha'
 
 console.log('------------------- HOME -------------------')
 
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, visibleModalDadosSalvos, setVisibleModalDadosSalvos } = useContext(GlobalContext)
+
     // const { setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
     
     useEffect(() => {
@@ -111,6 +112,12 @@ export default function Home() {
             transparent={true}
         >
             <ActionModalCodigoRepetido />
+        </Modal>
+        <Modal
+            visible={visibleModalDadosSalvos}
+            transparent={true}
+        >
+            <ActionModalDadosSalvos />
         </Modal>
         {/* <Modal
             visible={visibleModalSenha}

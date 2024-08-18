@@ -6,6 +6,7 @@ import MyButton from '../myButton'
 import { ApagarLista, CriarMyNotas, ExcluirNomeDb, GetList, Inserir } from '../../data'
 import { ValorNota } from '../functions'
 import { colors } from '../../colors'
+import TituloTexto from '../tituloTexto'
 
 
 export const ActionModalEditarNome = () => {
@@ -13,7 +14,6 @@ export const ActionModalEditarNome = () => {
     const [nomeEditado, setNomeEditado] = useState(null)
     return <TouchableOpacity
         style={styles.modal}
-        onPress={() => setVisibleModalEditarNome(false)}
     >
         <TouchableOpacity
             style={styles.containerModal}
@@ -27,7 +27,6 @@ export const ActionModalEditarNome = () => {
                     style={styles.nota}
                     placeholder='Digite o nome'
                     onChangeText={newName => setNomeEditado(newName.toUpperCase())}
-                    // keyboardType='default'
                     defaultValue={nome}
                     multiline={true}
                 />
@@ -43,7 +42,7 @@ export const ActionModalEditarNome = () => {
 /////////////////////////////////////////////////////////////////
 
 export const ActionModalConfirmar = () => {
-    const { setVisibleModalConfirmar, setTela, codigo, nome, nota } = useContext(GlobalContext)
+    const { setVisibleModalConfirmar, setTela, codigo, nome, nota, setVisibleModalDadosSalvos } = useContext(GlobalContext)
     return <TouchableOpacity
         style={styles.modal}
         onPress={() => setVisibleModalConfirmar(false)}
@@ -58,7 +57,7 @@ export const ActionModalConfirmar = () => {
                 </Text>
                 <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
                     <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => [setTela(3), setVisibleModalConfirmar(false)]} />
-                    <MyButton icon={'check'} onPress={() => [setTela(0), alert('Aluno e nota inseridos!'), setVisibleModalConfirmar(false), Inserir(codigo, nome, nota)]} />
+                    <MyButton icon={'check'} onPress={() => [setTela(0), setVisibleModalDadosSalvos(true), setVisibleModalConfirmar(false), Inserir(codigo, nome, nota)]} />
                 </View>
             </View>
         </TouchableOpacity>
@@ -209,4 +208,31 @@ export const ActionModalCodigoRepetido = () => {
             </View>
         </TouchableOpacity>
     </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////
+export const ActionModalDadosSalvos = () => {
+    const { setVisibleModalDadosSalvos, codigo, municipio, escola, ano, nome, nota } = useContext(GlobalContext)
+
+    return <TouchableOpacity
+    style={styles.modal}
+    onPress={() => setVisibleModalDadosSalvos(false)}
+>
+    <View style={{ width: '80%', height: '60%', backgroundColor: '#B1F793', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
+        <Text style={styles.texto2}>
+            DADOS INSERIDOS
+        </Text>
+        <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
+        <TituloTexto titulo={'ESCOLA'} texto={escola} />
+        <TituloTexto titulo={ano} />
+        <TituloTexto titulo={'NOME'} texto={nome} />
+        <TituloTexto titulo={'CÓDIGO'} texto={codigo} />
+        <View>
+            <Text style={styles.texto2}>NOTA</Text>
+            <Text
+                style={[styles.texto1, { fontSize: 32, fontWeight: 'bold', color: nota >= 8 ? 'blue' : 'red' }]}>{nota}
+            </Text>
+        </View>
+    </View>
+</TouchableOpacity>
 }
