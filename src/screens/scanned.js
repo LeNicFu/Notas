@@ -63,5 +63,3 @@ export default function Scanned() {
         </View>
     </View>
 }
-
-// proximaTela === true ? setTela(3) : setTela(1)

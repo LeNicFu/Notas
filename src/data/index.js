@@ -63,7 +63,12 @@ export function EditarNomeDb(nome, id) {
 }
 
 export function EditarNotaDb(nota, id) {
-    return db.runSync('UPDATE myNotas SET nota = ? WHERE id = ?', nota, id)
+    return [
+        db.runSync('UPDATE myNotas SET nota = ? WHERE id = ?', nota, id),
+        db.runSync('UPDATE myNotas SET classificado = ? WHERE id = ?',
+            nota > 7 ? 1 : 0,
+            id)
+    ]
 }
 
 export function ExcluirNomeDb(id) {

@@ -39,7 +39,7 @@ export default function Home() {
         initialize();
     }, []);
 
-    console.log(listaDeAlunosNotas)
+    // console.log(listaDeAlunosNotas)
 
     const totais = () => {
         const total = listaDeAlunosNotas.length
