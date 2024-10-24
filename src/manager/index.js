@@ -8,6 +8,7 @@ import Confirmacao from '../screens/confirmacao'
 import Listas from '../screens/listas'
 import ListaOrdenada from '../screens/listaOrdenada'
 import Editar from '../components/editar'
+import SegundaEtapa from '../screens/segundaEtapa'
 
 export default function Manager() {
     const { tela } = useContext(GlobalContext)
@@ -27,5 +28,7 @@ export default function Manager() {
         return <ListaOrdenada />
     } else if (tela === 7) {
         return <Editar />
+    } else if (tela === 8) {
+        return <SegundaEtapa />
     }
 }

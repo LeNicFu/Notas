@@ -13,42 +13,21 @@ console.log('------------------- HOME -------------------')
 export default function Home() {
     const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, visibleModalDadosSalvos, setVisibleModalDadosSalvos } = useContext(GlobalContext)
 
-    // const { setVisibleModalSenha, senhaVerificada, setSenhaVerificada } = useContext(GlobalContext)
-    
     useEffect(() => {
         const initialize = async () => {
             await CriarMyNotas();
             const lista = await GetList();
             setListaDeAlunosNotas(lista);
-
-            // await CriarMySenha();
-            // const senhaObtida = await GetSenha();
-
-            // if (senhaVerificada === false) {
-            //     if (senhaObtida.length === 0) {
-            //         console.log('??????????????????');
-            //         setVisibleModalSenha(true);
-            //         setSenhaVerificada(true);
-            //     } else {
-            //         console.log(senhaObtida);
-            //         setSenhaVerificada(true);
-            //     }
-            // }
         };
 
         initialize();
     }, []);
 
-    // console.log(listaDeAlunosNotas)
-
     const totais = () => {
         const total = listaDeAlunosNotas.length
         let classificados = 0
         listaDeAlunosNotas.forEach(item => classificados += item.classificado)
-        // for (let i = 0; i < listaDeAlunosNotas.length; i++) {
-        //     if ()
-        // }
-        return {total: total, classificados: classificados, naoClassificados: total - classificados}
+        return { total: total, classificados: classificados, naoClassificados: total - classificados }
     }
 
     return <View style={styles.container}>
@@ -83,8 +62,18 @@ export default function Home() {
         >
             <Entypo name={'mail'} size={60} color='white' />
         </TouchableOpacity>
+
         <TouchableOpacity
-            style={{ position: 'absolute', bottom: 30, center: 0 }}
+            style={{ height: 40, width: '50%', justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white', position: 'absolute', center: 0, bottom: 150 }}
+            onPress={() => setTela(8)}
+            >
+            <Text style={{ fontWeight: 'bold', fontSize: 24 }}>
+                SEGUNDA ETAPA
+            </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+            style={{ position: 'absolute', bottom: 10, center: 0 }}
             onPress={() => setVisibleModalExcluirLista(true)}
         >
             <Entypo name={'trash'} size={60} color='red' />

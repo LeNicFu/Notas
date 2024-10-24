@@ -50,7 +50,6 @@ export default function Scanned() {
                 <Entypo name={'back'} size={50} color='white' />
             </TouchableOpacity>
         </View>
-
         <View style={{ width: '80%', height: '60%', backgroundColor: 'white', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
             <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
             <TituloTexto titulo={'ESCOLA'} texto={escola} />

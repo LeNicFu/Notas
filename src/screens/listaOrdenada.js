@@ -14,15 +14,7 @@ export default function ListaOrdenada() {
   function Ordenadar() {
     if (fatorDeOrdenacao === 'nome') {
       alunos.sort(function (a, b) {
-        if (a.nome > b.nome) {
-          return 1
-        }
-        if (a.nome < b.nome) {
-          return -1
-        }
-        if (a.nome = b.nome) {
-          return 0
-        }
+        return a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' });
       })
     } else if (fatorDeOrdenacao === 'nota') {
       alunos.sort(function (a, b) {
@@ -72,7 +64,7 @@ export default function ListaOrdenada() {
         <Text style={styles.texto1}>
           {codigo}
         </Text>
-        <Text style={[styles.texto1, {fontSize: 16}]}>
+        <Text style={[styles.texto1, { fontSize: 16 }]}>
           {EncontrarEscola(codigo).Ano}
         </Text>
       </View>
@@ -110,5 +102,4 @@ export default function ListaOrdenada() {
       renderItem={({ item }) => EstiloLista(item.codigo, item.nome, item.nota, item.id)}
     />
   </View>
-
-}
+}//105
