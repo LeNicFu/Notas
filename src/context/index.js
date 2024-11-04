@@ -8,15 +8,15 @@ export default function InfoProvider({ children }) {
     const [id, setId] = useState(null)
     const [tela, setTela] = useState(0)
     const [ano, setAno] = useState(null)
+    const [anoSegundaEtapa, setAnoSegundaEtapa] = useState(null)
     const [nome, setNome] = useState(null)
     const [nota, setNota] = useState(null)
     const [codigo, setCodigo] = useState(null)
     const [escola, setEscola] = useState(null)
+    const [centro, setCentro] = useState(null)
     const [municipio, setMunicipio] = useState(null)
-    // const [senhaVerificada, setSenhaVerificada] = useState(false)
     const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
     const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
-    // const [visibleModalSenha, setVisibleModalSenha] = useState(false)
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
     const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
@@ -38,10 +38,10 @@ export default function InfoProvider({ children }) {
             nota, setNota,
             codigo, setCodigo,
             escola, setEscola,
+            centro, setCentro,
             municipio, setMunicipio,
-            // senhaVerificada, setSenhaVerificada,
+            anoSegundaEtapa, setAnoSegundaEtapa,
             fatorDeOrdenacao, setFatorDeOrdenacao,
-            // visibleModalSenha, setVisibleModalSenha,
             listaDeAlunosNotas, setListaDeAlunosNotas,
             visibleModalEditar, setVisibleModalEditar,
             visibleModalEnviar, setVisibleModalEnviar,

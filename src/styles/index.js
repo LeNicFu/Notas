@@ -54,5 +54,17 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    anoContainer: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 1,
+        borderRadius: 7,
+        justifyContent: 'center',
+    },
+    anoTexto: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })
