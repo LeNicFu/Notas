@@ -6,7 +6,7 @@ import { GlobalContext } from '../../context'
 
 const estiloAnoTexto = (n, ano) => {
     if (n === ano) {
-        return { fontSize: 24 }
+        return { fontSize: 24, fontWeight: 'bold' }
     } else {
         return {}
     }
@@ -14,7 +14,7 @@ const estiloAnoTexto = (n, ano) => {
 
 const estiloAnoContainer = (n, ano) => {
     if (n === ano) {
-        return { borderWidth: 3, borderRadius: 10 }
+        return { borderWidth: 4, borderRadius: 10 }
     } else {
         return {}
     }
@@ -23,7 +23,7 @@ const estiloAnoContainer = (n, ano) => {
 export default function Ano({ centro }) {
     const { anoSegundaEtapa, setAnoSegundaEtapa } = useContext(GlobalContext)
 
-    return <View style={{ flex: 1, width: '100%', alignItems: 'center' }}>
+    return <View style={{ width: '100%', alignItems: 'center' }}>
         <View style={{ backgroundColor: 'white', width: '100%', minHeight: 40, justifyContent: 'center' }}>
             <TituloTexto titulo={centro} />
         </View>
@@ -33,7 +33,7 @@ export default function Ano({ centro }) {
             onPress={() => setAnoSegundaEtapa(6)}
             >
                 <Text style={[styles.anoTexto, estiloAnoTexto(6, anoSegundaEtapa)]}>
-                    {' '}6º ano{' '}
+                    {'  '}6º ano{'  '}
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -41,7 +41,7 @@ export default function Ano({ centro }) {
             onPress={() => setAnoSegundaEtapa(7)}
             >
                 <Text style={[styles.anoTexto, estiloAnoTexto(7, anoSegundaEtapa)]}>
-                    {' '}7º ano{' '}
+                    {'  '}7º ano{'  '}
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -49,7 +49,7 @@ export default function Ano({ centro }) {
             onPress={() => setAnoSegundaEtapa(8)}
             >
                 <Text style={[styles.anoTexto, estiloAnoTexto(8, anoSegundaEtapa)]}>
-                    {' '}8º ano{' '}
+                    {'  '}8º ano{'  '}
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -57,7 +57,7 @@ export default function Ano({ centro }) {
             onPress={() => setAnoSegundaEtapa(9)}
             >
                 <Text style={[styles.anoTexto, estiloAnoTexto(9, anoSegundaEtapa)]}>
-                    {' '}9º ano{' '}
+                    {'  '}9º ano{'  '}
                 </Text>
             </TouchableOpacity>
         </View>

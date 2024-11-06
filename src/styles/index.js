@@ -64,7 +64,7 @@ export default StyleSheet.create({
     },
     anoTexto: {
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: '500',
         textAlign: 'center',
     }
 })

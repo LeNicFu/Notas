@@ -17,6 +17,7 @@ export default function InfoProvider({ children }) {
     const [municipio, setMunicipio] = useState(null)
     const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
     const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
+    const [listasSegundaEtapa, setListasSegundaEtapa] = useState(null)
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
     const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
@@ -45,6 +46,7 @@ export default function InfoProvider({ children }) {
             listaDeAlunosNotas, setListaDeAlunosNotas,
             visibleModalEditar, setVisibleModalEditar,
             visibleModalEnviar, setVisibleModalEnviar,
+            listasSegundaEtapa, setListasSegundaEtapa,
             visibleModalConfirmar, setVisibleModalConfirmar,
             visibleModalEditarNome, setVisibleModalEditarNome,
             visibleModalExcluirNome, setVisibleModalExcluirNome,

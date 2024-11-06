@@ -1,6 +1,6 @@
 import * as SQLite from 'expo-sqlite'
 
-const db = SQLite.openDatabaseSync('dbNotas');
+export const db = SQLite.openDatabaseSync('dbNotas');
 
 export function CriarMyNotas() {
     db.execSync(`
