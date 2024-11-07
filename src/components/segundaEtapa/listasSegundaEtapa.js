@@ -3,10 +3,10 @@ import { FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../../context'
 import { GetListSE } from '../../data/dataSegundaEtapa'
 import styles from '../../styles'
-import { ActionModalEditar } from '../modais'
+import { ActionModalEditar, ActionModalEditarSE } from '../modais'
 
 export default function ListasSegundaEtapa() {
-    const { anoSegundaEtapa, centro, visibleModalEditar, setVisibleModalEditar, setNome, setNota, setId } = useContext(GlobalContext)
+    const { anoSegundaEtapa, centro, visibleModalEditarSE, setVisibleModalEditarSE, setNome, setNota, setId } = useContext(GlobalContext)
 
     const lista = []
 
@@ -21,7 +21,7 @@ export default function ListasSegundaEtapa() {
 
     function EstiloLista(codigo, nome, nota, id) {
         return <TouchableOpacity style={styles.containerListas}
-          onPress={() => [setNome(nome), setNota(nota), setId(id), setVisibleModalEditar(true)]}
+          onPress={() => [setNome(nome), setNota(nota), setId(id), setVisibleModalEditarSE(true)]}
         >
             <View>
                 <Text style={styles.texto1}>
@@ -48,10 +48,10 @@ export default function ListasSegundaEtapa() {
             renderItem={({ item }) => EstiloLista(item.codigo, item.nome, item.nota, item.id)}
         />
         <Modal
-            visible={visibleModalEditar}
+            visible={visibleModalEditarSE}
             transparent={true}
         >
-            <ActionModalEditar />
+            <ActionModalEditarSE />
         </Modal>
     </View>
 }

@@ -110,6 +110,50 @@ export const ActionModalEditar = () => {
 }
 
 /////////////////////////////////////////////////////////////////
+
+export const ActionModalEditarSE = () => {
+    const { nome, setNome, nota, setVisibleModalEditarSE, setNota } = useContext(GlobalContext)
+    const [nomeEditado, setNomeEditado] = useState(nome)
+
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalEditarSE(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModal}
+            activeOpacity={1}
+        >
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+                <Text style={styles.texto2}>
+                    NOME
+                </Text>
+                <TextInput
+                    style={[styles.nota,{color: 'blue'}]}
+                    placeholder='Digite o nome'
+                    onChangeText={newName => setNomeEditado(newName.toUpperCase())}
+                    defaultValue={nome}
+                    multiline={true}
+                />
+                <Text style={styles.texto2}>
+                    NOTA
+                </Text>
+                <TextInput
+                    style={[styles.nota, { fontSize: 28 }]}
+                    placeholder='Nova nota'
+                    onChangeText={newNota => setNota(ValorNota(newNota.replace(/[^0-9]/g, '')))}
+                    keyboardType='number-pad'
+                    defaultValue={nota}
+                />
+
+                <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
+                    <MyButton icon={'check'} onPress={() => [setNome(nomeEditado), setVisibleModalEditarSE(false)]} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////
 export const ActionModalExcluirNome = () => {
     const { nome, setVisibleModalExcluirNome, id, setListaDeAlunosNotas, setTela } = useContext(GlobalContext)
 
