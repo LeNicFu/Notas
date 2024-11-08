@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { GlobalContext } from '../../context'
 import { GetListSE } from '../../data/dataSegundaEtapa'
@@ -8,20 +8,25 @@ import { ActionModalEditar, ActionModalEditarSE } from '../modais'
 export default function ListasSegundaEtapa() {
     const { anoSegundaEtapa, centro, visibleModalEditarSE, setVisibleModalEditarSE, setNome, setNota, setId } = useContext(GlobalContext)
 
+    const alunosComNota = (lista) => {
+        let n = 0
+        lista.forEach(item => item.nota.length > 0 && typeof parseFloat(item.nota) === 'number' ? n++ : null)
+        return n
+    }
+
     const lista = []
 
     GetListSE().forEach(item => {
-        item.centro === centro && item.ano === anoSegundaEtapa? lista.push(item) : null
+        item.centro === centro && item.ano === anoSegundaEtapa ? lista.push(item) : null
     })
 
     lista.sort(function (a, b) {
         return a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' });
-      })
-
+    })
 
     function EstiloLista(codigo, nome, nota, id) {
         return <TouchableOpacity style={styles.containerListas}
-          onPress={() => [setNome(nome), setNota(nota), setId(id), setVisibleModalEditarSE(true)]}
+            onPress={() => [setNome(nome), setNota(nota), setId(id), setVisibleModalEditarSE(true)]}
         >
             <View>
                 <Text style={styles.texto1}>
@@ -34,13 +39,18 @@ export default function ListasSegundaEtapa() {
             <Text style={[styles.texto1, { alignContent: 'center', maxWidth: '70%' }]}>
                 {nome}
             </Text>
-            <Text style={[styles.texto2, { color: nota >= 8 ? 'blue' : 'red', marginRight: 10 }]}>
+            <Text style={[styles.texto2, { color: nota >= 5 ? 'blue' : 'red', marginRight: 10 }]}>
                 {nota}
             </Text>
         </TouchableOpacity>
     }
 
     return <View style={{ flex: 1, width: '100%', alignItems: 'center', paddingTop: 10 }}>
+        <View>
+            <Text style={{color: 'white', fontSize: 24, fontWeight: '400'}}>
+                Total de notas do {anoSegundaEtapa}º ano: {alunosComNota(lista)}
+            </Text>
+        </View>
         <FlatList
             style={{ width: '100%', backgroundColor: 'black' }}
             data={lista}
@@ -53,5 +63,6 @@ export default function ListasSegundaEtapa() {
         >
             <ActionModalEditarSE />
         </Modal>
+
     </View>
 }

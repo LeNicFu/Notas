@@ -84,6 +84,67 @@ export const ActionModalEnviar = () => {
     </TouchableOpacity>
 }
 
+export const ActionModalEnviarSE = () => {
+    const { setVisibleModalEnviarSE, listaDeAlunosNotas, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
+    const [alunos, setAlunos] = useState(listaDeAlunosNotas)
+    const [senha, setSenha] = useState('')
+    const passWord = 'OLIM@TUESC'
+
+
+
+    const enviarEmail = async () => {
+        const lista = JSON.stringify(alunos)
+
+        const email = {
+            recipients: ['olimat@uesc.br', 'rrsilva@uesc.br'],
+            subject: `Lista com ${alunos.length} alunos`,
+            body: `${lista}`,
+        }
+
+        await MailComposer.composeAsync(email)
+    }
+
+    const enviando = () => {
+        setTimeout(() => setVisibleModalAbrindoEmail(false), 2000)
+    }
+
+    const confirmar = (senha) => {
+        if (senha == passWord) {
+            setVisibleModalEnviarSE(false)
+            enviarEmail()
+            setVisibleModalAbrindoEmail(true)
+            enviando()
+        } else {
+            alert('Senha incorreta!')
+        }
+    }
+
+    return <TouchableOpacity
+        style={styles.modal}n
+        onPress={() => setVisibleModalEnviarSE(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModal}
+            activeOpacity={1}
+        >
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+                <Text style={styles.texto2}>
+                    Enviar a lista por e-mail
+                </Text>
+                <TextInput
+                    style={styles.nota}
+                    placeholder='Digite a senha'
+                    onChangeText={newSenha => setSenha(newSenha.toUpperCase())}
+                />
+                <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
+                    <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalEnviarSE(false)} />
+                    <MyButton icon={'mail'} onPress={() => confirmar(senha)} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
 export const ActionModalAbrindoEmail = () => {
     const { visibleModalAbrindoEmail, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
 

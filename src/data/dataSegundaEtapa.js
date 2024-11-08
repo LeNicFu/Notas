@@ -28,3 +28,13 @@ export function ApagarListaSE() {
     `)
     return console.log('A lista foi apagada.')
 }
+
+export function EditarNomeSE(nome, id) {
+    return db.runSync('UPDATE myListaSE SET nome = ? WHERE id = ?', nome, id)
+}
+
+export function EditarNotaSE(nota, id) {
+    return [
+        db.runSync('UPDATE myListaSE SET nota = ? WHERE id = ?', nota, id),
+    ]
+}

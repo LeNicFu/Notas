@@ -108,11 +108,5 @@ export default function Home() {
         >
             <ActionModalDadosSalvos />
         </Modal>
-        {/* <Modal
-            visible={visibleModalSenha}
-            transparent={true}
-        >
-            <ActionModalSenha />
-        </Modal> */}
     </View>
 }

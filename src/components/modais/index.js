@@ -4,10 +4,10 @@ import { GlobalContext } from '../../context'
 import styles from '../../styles'
 import MyButton from '../myButton'
 import { ApagarLista, CriarMyNotas, ExcluirNomeDb, GetList, Inserir } from '../../data'
-import { ValorNota } from '../functions'
+import { ValorNota, ValorNotaSE } from '../functions'
 import { colors } from '../../colors'
 import TituloTexto from '../tituloTexto'
-
+import { EditarNomeSE, EditarNotaSE } from '../../data/dataSegundaEtapa'
 
 export const ActionModalEditarNome = () => {
     const { setVisibleModalEditarNome, nome, setNome } = useContext(GlobalContext)
@@ -112,7 +112,7 @@ export const ActionModalEditar = () => {
 /////////////////////////////////////////////////////////////////
 
 export const ActionModalEditarSE = () => {
-    const { nome, setNome, nota, setVisibleModalEditarSE, setNota } = useContext(GlobalContext)
+    const { nome, setNome, nota, setVisibleModalEditarSE, setNota, id } = useContext(GlobalContext)
     const [nomeEditado, setNomeEditado] = useState(nome)
 
     return <TouchableOpacity
@@ -120,7 +120,7 @@ export const ActionModalEditarSE = () => {
         onPress={() => setVisibleModalEditarSE(false)}
     >
         <TouchableOpacity
-            style={styles.containerModal}
+            style={[styles.containerModal, {borderWidth: 3}]}
             activeOpacity={1}
         >
             <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
@@ -140,13 +140,14 @@ export const ActionModalEditarSE = () => {
                 <TextInput
                     style={[styles.nota, { fontSize: 28 }]}
                     placeholder='Nova nota'
-                    onChangeText={newNota => setNota(ValorNota(newNota.replace(/[^0-9]/g, '')))}
+                    onChangeText={newNota => setNota(ValorNotaSE(newNota.replace(/[^0-9]/g, '')))}
                     keyboardType='number-pad'
                     defaultValue={nota}
                 />
 
                 <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
-                    <MyButton icon={'check'} onPress={() => [setNome(nomeEditado), setVisibleModalEditarSE(false)]} />
+                    <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalEditarSE(false)} />
+                    <MyButton icon={'check'} onPress={() => [EditarNomeSE(nomeEditado, id), EditarNotaSE(nota, id), setVisibleModalEditarSE(false)]} />
                 </View>
             </View>
         </TouchableOpacity>

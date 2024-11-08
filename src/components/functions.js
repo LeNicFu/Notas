@@ -27,6 +27,12 @@ export function ValorNota(nota) {
     }
 }
 
+export function ValorNotaSE(nota) {
+    if (nota >= 0 && nota <= 10) {
+        return nota
+    }
+}
+
 export function EliminaZero(nota) {
     let novaNota = nota
     if (novaNota.length > 1) {

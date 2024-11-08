@@ -8,19 +8,20 @@ export default function InfoProvider({ children }) {
     const [id, setId] = useState(null)
     const [tela, setTela] = useState(0)
     const [ano, setAno] = useState(null)
-    const [anoSegundaEtapa, setAnoSegundaEtapa] = useState(null)
     const [nome, setNome] = useState(null)
     const [nota, setNota] = useState(null)
     const [codigo, setCodigo] = useState(null)
     const [escola, setEscola] = useState(null)
     const [centro, setCentro] = useState(null)
     const [municipio, setMunicipio] = useState(null)
+    const [anoSegundaEtapa, setAnoSegundaEtapa] = useState(null)
     const [fatorDeOrdenacao, setFatorDeOrdenacao] = useState(null)
     const [listaDeAlunosNotas, setListaDeAlunosNotas] = useState([])
     const [listasSegundaEtapa, setListasSegundaEtapa] = useState(null)
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
-    const [visibleModalEditarSE, setVisibleModalEditarSE] = useState(false)
     const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
+    const [visibleModalEditarSE, setVisibleModalEditarSE] = useState(false)
+    const [visibleModalEnviarSE, setVisibleModalEnviarSE] = useState(false)
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
     const [visibleModalEditarNome, setVisibleModalEditarNome] = useState(false)
     const [visibleModalExcluirNome, setVisibleModalExcluirNome] = useState(false)
@@ -49,6 +50,7 @@ export default function InfoProvider({ children }) {
             visibleModalEnviar, setVisibleModalEnviar,
             listasSegundaEtapa, setListasSegundaEtapa,
             visibleModalEditarSE, setVisibleModalEditarSE,
+            visibleModalEnviarSE, setVisibleModalEnviarSE,
             visibleModalConfirmar, setVisibleModalConfirmar,
             visibleModalEditarNome, setVisibleModalEditarNome,
             visibleModalExcluirNome, setVisibleModalExcluirNome,
