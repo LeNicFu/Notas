@@ -140,14 +140,14 @@ export const ActionModalEditarSE = () => {
                 <TextInput
                     style={[styles.nota, { fontSize: 28 }]}
                     placeholder='Nova nota'
-                    onChangeText={newNota => setNota(ValorNotaSE(newNota.replace(/[^0-9]/g, '')))}
+                    onChangeText={newNota => setNota(ValorNotaSE(newNota.replace(',', '.').replace(/[^0-9.]/g, '')))}
                     keyboardType='number-pad'
                     defaultValue={nota}
                 />
 
                 <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
                     <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalEditarSE(false)} />
-                    <MyButton icon={'check'} onPress={() => [EditarNomeSE(nomeEditado, id), EditarNotaSE(nota, id), setVisibleModalEditarSE(false)]} />
+                    <MyButton icon={'check'} onPress={() => [EditarNomeSE(nomeEditado, id), EditarNotaSE(nota, id), setVisibleModalEditarSE(false), nota.length === 0 ? alert('A nota NÃO foi registrada!') : null]} />
                 </View>
             </View>
         </TouchableOpacity>

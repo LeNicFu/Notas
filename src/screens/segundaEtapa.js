@@ -6,8 +6,8 @@ import Centro from '../components/segundaEtapa/centro'
 import Ano from '../components/segundaEtapa/ano'
 import ListasSegundaEtapa from '../components/segundaEtapa/listasSegundaEtapa'
 import { ApagarListaSE, CriarListaSE, GetListSE } from '../data/dataSegundaEtapa'
-import { ListasSE } from '../components/segundaEtapa/functions'
-import { ActionModalEnviar, ActionModalEnviarSE } from '../components/modais/enviar'
+import { ListaEnviarSE, ListasSE } from '../components/segundaEtapa/functions'
+import { ActionModalAbrindoEmail, ActionModalEnviar, ActionModalEnviarSE } from '../components/modais/enviar'
 
 // ApagarListaSE()
 CriarListaSE()
@@ -16,7 +16,7 @@ console.log('-------------------------------------------------------------------
 console.log(GetListSE().length)
 
 export default function SegundaEtapa() {
-    const { setTela, centro, setCentro, anoSegundaEtapa, setAnoSegundaEtapa, listasSegundaEtapa, setListasSegundaEtapa, visibleModalEnviarSE, setVisibleModalEnviarSE } = useContext(GlobalContext)
+    const { setTela, centro, setCentro, anoSegundaEtapa, setAnoSegundaEtapa, setListasSegundaEtapa, visibleModalEnviarSE, setVisibleModalEnviarSE, visibleModalAbrindoEmail } = useContext(GlobalContext)
     const [reload, setReload] = useState(false)
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function SegundaEtapa() {
             <View style={{ width: '98%', backgroundColor: 'black', justifyContent: 'space-between', alignItems: 'center' }}>
                 <TouchableOpacity
                     style={{ paddingTop: 20 }}
-                    onPress={() => setVisibleModalEnviarSE(true)}
+                    onPress={() => [setVisibleModalEnviarSE(true), setListasSegundaEtapa(ListaEnviarSE(GetListSE()))]}
                 >
                     <Entypo name={'mail'} size={60} color='white' />
                 </TouchableOpacity>
@@ -71,6 +71,12 @@ export default function SegundaEtapa() {
             transparent={true}
         >
             <ActionModalEnviarSE />
+        </Modal>
+        <Modal
+            visible={visibleModalAbrindoEmail}
+            transparent={true}
+        >
+            <ActionModalAbrindoEmail />
         </Modal>
     </View>
 }

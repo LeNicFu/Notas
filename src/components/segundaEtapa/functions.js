@@ -21,3 +21,12 @@ export function ListasSE() {
         })
     }
 }
+
+export function ListaEnviarSE(lista) {
+    const listaEnviar = []
+    lista.forEach(item => {
+        const nota = item.nota
+        nota.length > 0 ? listaEnviar.push(item) : null
+    })
+    return listaEnviar
+}

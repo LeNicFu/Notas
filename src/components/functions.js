@@ -28,8 +28,11 @@ export function ValorNota(nota) {
 }
 
 export function ValorNotaSE(nota) {
-    if (nota >= 0 && nota <= 10) {
+    if (nota >= 0 && nota <= 10 && nota[0] >= 0) {
         return nota
+    } else {
+        alert('Digite um valor para a nota de 0 a 10 ou cancele a operação se não for fazer o registro da nota agora!')
+        return ''
     }
 }
 

@@ -47,7 +47,7 @@ export default function ListasSegundaEtapa() {
 
     return <View style={{ flex: 1, width: '100%', alignItems: 'center', paddingTop: 10 }}>
         <View>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: '400'}}>
+            <Text style={{ color: 'white', fontSize: 24, fontWeight: '400' }}>
                 Total de notas do {anoSegundaEtapa}º ano: {alunosComNota(lista)}
             </Text>
         </View>

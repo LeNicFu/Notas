@@ -59,7 +59,7 @@ export const ActionModalEnviar = () => {
     }
 
     return <TouchableOpacity
-        style={styles.modal}n
+        style={styles.modal}
         onPress={() => setVisibleModalEnviar(false)}
     >
         <TouchableOpacity
@@ -85,19 +85,16 @@ export const ActionModalEnviar = () => {
 }
 
 export const ActionModalEnviarSE = () => {
-    const { setVisibleModalEnviarSE, listaDeAlunosNotas, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
-    const [alunos, setAlunos] = useState(listaDeAlunosNotas)
+    const { setVisibleModalEnviarSE, listasSegundaEtapa, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [senha, setSenha] = useState('')
     const passWord = 'OLIM@TUESC'
-
-
-
+    
     const enviarEmail = async () => {
-        const lista = JSON.stringify(alunos)
+        const lista = JSON.stringify(listasSegundaEtapa)
 
         const email = {
             recipients: ['olimat@uesc.br', 'rrsilva@uesc.br'],
-            subject: `Lista com ${alunos.length} alunos`,
+            subject: `Lista com ${listasSegundaEtapa.length} notas`,
             body: `${lista}`,
         }
 
@@ -120,14 +117,14 @@ export const ActionModalEnviarSE = () => {
     }
 
     return <TouchableOpacity
-        style={styles.modal}n
+        style={styles.modal}
         onPress={() => setVisibleModalEnviarSE(false)}
     >
         <TouchableOpacity
             style={styles.containerModal}
             activeOpacity={1}
         >
-            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%', borderWidth: 4, borderColor: 'blue', borderRadius: 20 }}>
                 <Text style={styles.texto2}>
                     Enviar a lista por e-mail
                 </Text>
@@ -156,7 +153,7 @@ export const ActionModalAbrindoEmail = () => {
             style={[styles.containerModal, {height: 100}]}
             activeOpacity={1}
         >
-            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%', borderWidth: 3, borderColor: 'blue', borderRadius: 20 }}>
                 <Text style={styles.texto2}>
                     Abrindo o app de e-mail...
                 </Text>
