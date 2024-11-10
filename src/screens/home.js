@@ -4,14 +4,15 @@ import { GlobalContext } from '../context'
 import styles from '../styles'
 import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { Entypo } from '@expo/vector-icons'
-import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLista } from '../components/modais'
+import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLista, ActionModalSenhaSE } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
+import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
 // import { ActionModalSenha } from '../components/modais/senha'
 
 console.log('------------------- HOME -------------------')
 
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, visibleModalDadosSalvos, setVisibleModalDadosSalvos } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, visibleModalDadosSalvos, setVisibleModalDadosSalvos, visibleModalSenhaSE, setVisibleModalSenhaSE } = useContext(GlobalContext)
 
     useEffect(() => {
         const initialize = async () => {
@@ -65,7 +66,7 @@ export default function Home() {
 
         <TouchableOpacity
             style={{ height: 40, width: '50%', justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white', position: 'absolute', center: 0, bottom: 150 }}
-            onPress={() => setTela(8)}
+            onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
             >
             <Text style={{ fontWeight: 'bold', fontSize: 24 }}>
                 SEGUNDA ETAPA
@@ -107,6 +108,12 @@ export default function Home() {
             transparent={true}
         >
             <ActionModalDadosSalvos />
+        </Modal>
+        <Modal
+            visible={visibleModalSenhaSE}
+            transparent={true}
+        >
+            <ActionModalSenhaSE />
         </Modal>
     </View>
 }

@@ -8,6 +8,7 @@ import { ValorNota, ValorNotaSE } from '../functions'
 import { colors } from '../../colors'
 import TituloTexto from '../tituloTexto'
 import { EditarNomeSE, EditarNotaSE } from '../../data/dataSegundaEtapa'
+import { GetSenhaSE, InserirSenhaSE } from '../../data/senhaSegundaEtapa'
 
 export const ActionModalEditarNome = () => {
     const { setVisibleModalEditarNome, nome, setNome } = useContext(GlobalContext)
@@ -281,3 +282,47 @@ export const ActionModalDadosSalvos = () => {
     </View>
 </TouchableOpacity>
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const ActionModalSenhaSE = () => {
+    const { setVisibleModalSenhaSE, setTela } = useContext(GlobalContext)
+    const [senha, setSenha] = useState('')
+
+    const confirmar = (senha) => {
+        InserirSenhaSE(senha)
+        if (GetSenhaSE().length === 1) {
+            setVisibleModalSenhaSE(false)
+            setTela(8)
+        } else {
+            alert('Senha incorreta!')
+        }
+    }
+
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalSenhaSE(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModal}
+            activeOpacity={1}
+        >
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%', borderWidth: 4, borderColor: 'blue', borderRadius: 20 }}>
+                <Text style={styles.texto2}>
+                    Digite a senha para ter acesso aos dados da seguna etapa. Esse processo será feito apenas no preimeiro acesso.
+                </Text>
+                <TextInput
+                    style={styles.nota}
+                    placeholder='Digite a senha'
+                    onChangeText={newSenha => setSenha(newSenha.toUpperCase())}
+                />
+                <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
+                    <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalSenhaSE(false)} />
+                    <MyButton icon={'check'} onPress={() => confirmar(senha)} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////

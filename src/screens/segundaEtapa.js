@@ -58,7 +58,7 @@ export default function SegundaEtapa() {
         {centro ?
             <Ano centro={centro} /> :
             <View style={{ justifyContent: 'center', flex: 1, width: '100%', alignItems: 'center' }}>
-                <View style={{ width: '80%', height: '60%', backgroundColor: 'white', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
+                <View style={{ width: '90%', height: '80%', backgroundColor: 'white', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
                     <Centro />
                 </View>
             </View>

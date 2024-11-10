@@ -84,6 +84,8 @@ export const ActionModalEnviar = () => {
     </TouchableOpacity>
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 export const ActionModalEnviarSE = () => {
     const { setVisibleModalEnviarSE, listasSegundaEtapa, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [senha, setSenha] = useState('')
@@ -95,7 +97,7 @@ export const ActionModalEnviarSE = () => {
         const email = {
             recipients: ['olimat@uesc.br', 'rrsilva@uesc.br'],
             subject: `Lista com ${listasSegundaEtapa.length} notas`,
-            body: `${lista}`,
+            body: `${lista}`
         }
 
         await MailComposer.composeAsync(email)
@@ -141,6 +143,8 @@ export const ActionModalEnviarSE = () => {
         </TouchableOpacity>
     </TouchableOpacity>
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export const ActionModalAbrindoEmail = () => {
     const { visibleModalAbrindoEmail, setVisibleModalAbrindoEmail } = useContext(GlobalContext)

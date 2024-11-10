@@ -20,6 +20,7 @@ export default function InfoProvider({ children }) {
     const [listasSegundaEtapa, setListasSegundaEtapa] = useState(null)
     const [visibleModalEditar, setVisibleModalEditar] = useState(false)
     const [visibleModalEnviar, setVisibleModalEnviar] = useState(false)
+    const [visibleModalSenhaSE, setVisibleModalSenhaSE] = useState(false)
     const [visibleModalEditarSE, setVisibleModalEditarSE] = useState(false)
     const [visibleModalEnviarSE, setVisibleModalEnviarSE] = useState(false)
     const [visibleModalConfirmar, setVisibleModalConfirmar] = useState(false)
@@ -49,6 +50,7 @@ export default function InfoProvider({ children }) {
             visibleModalEditar, setVisibleModalEditar,
             visibleModalEnviar, setVisibleModalEnviar,
             listasSegundaEtapa, setListasSegundaEtapa,
+            visibleModalSenhaSE, setVisibleModalSenhaSE,
             visibleModalEditarSE, setVisibleModalEditarSE,
             visibleModalEnviarSE, setVisibleModalEnviarSE,
             visibleModalConfirmar, setVisibleModalConfirmar,
