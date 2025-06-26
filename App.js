@@ -5,6 +5,6 @@ import Manager from './src/manager'
 export default function App() {
   return <InfoProvider>
     <Manager />
-    <StatusBar barStyle={'dark-content'} />
+    {/* <StatusBar barStyle={'dark-content'} /> */}
   </InfoProvider>
 }
