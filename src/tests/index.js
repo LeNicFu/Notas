@@ -9,6 +9,15 @@ const listaSegundaEtapa = require('../data/listaParaPresenca.json')
 
 const n = ''
 
-console.log(typeof n === 'number')
-console.log(typeof parseFloat(n) === 'number')
-console.log(n.length > 0)
+// console.log(typeof n === 'number')
+// console.log(typeof parseFloat(n) === 'number')
+// console.log(n.length > 0)
+
+const lista = require('../data/listaAlunos.json')
+const lista24 = require('../data/listaAlunos24.json')
+console.log(lista.length)
+console.log(lista24.length)
+console.log(listaPP[0])
+
+// console.log(pg[0])
+// console.log(pg[57])

@@ -7,6 +7,7 @@ import { Entypo } from '@expo/vector-icons'
 import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLista, ActionModalSenhaSE } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
+import { distanceTop } from '../settings'
 // import { ActionModalSenha } from '../components/modais/senha'
 
 console.log('------------------- HOME -------------------')
@@ -32,7 +33,7 @@ export default function Home() {
     }
 
     return <View style={styles.container}>
-        <View style={{ position: 'absolute', top: 50, center: 0 }}>
+        <View style={{ position: 'absolute', top: distanceTop, center: 0 }}>
             <Text style={[styles.texto2, { color: 'white' }]}>
                 Total: {totais().total}
             </Text>
@@ -41,6 +42,9 @@ export default function Home() {
             </Text>
             <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
                 NC: {totais().naoClassificados}
+            </Text>
+            <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
+                2025
             </Text>
         </View>
         <TouchableOpacity
@@ -52,13 +56,13 @@ export default function Home() {
                 source={require('../../assets/icons8-barcode-scanner-100.png')} />
         </TouchableOpacity>
         <TouchableOpacity
-            style={{ position: 'absolute', top: 50, right: 20 }}
+            style={{ position: 'absolute', top: distanceTop, right: 20 }}
             onPress={() => setTela(5)}
         >
             <Entypo name={'list'} size={60} color='white' />
         </TouchableOpacity>
         <TouchableOpacity
-            style={{ position: 'absolute', top: 50, left: 20 }}
+            style={{ position: 'absolute', top: distanceTop, left: 20 }}
             onPress={() => setVisibleModalEnviar(true)}
         >
             <Entypo name={'mail'} size={60} color='white' />
@@ -66,8 +70,8 @@ export default function Home() {
 
         <TouchableOpacity
             style={{ height: 40, width: '50%', justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white', position: 'absolute', center: 0, bottom: 150 }}
-            // onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
-            >
+        // onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
+        >
             <Text style={{ fontWeight: 'bold', fontSize: 24 }}>
                 SEGUNDA ETAPA
             </Text>
