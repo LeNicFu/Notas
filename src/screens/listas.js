@@ -1,16 +1,24 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { GlobalContext } from '../context'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styles from '../styles'
 import { Entypo } from '@expo/vector-icons'
 import { ButtonList } from '../components/myButton'
 import { distanceTop } from '../settings'
+import * as Clipboard from 'expo-clipboard'
 
 export default function Listas() {
     const { listaDeAlunosNotas, setTela, setFatorDeOrdenacao } = useContext(GlobalContext)
+    const [alunos, setAlunos] = useState(listaDeAlunosNotas)
+
+    const copiarParaClipboard = async () => {
+        const lista = JSON.stringify(alunos)
+        await Clipboard.setStringAsync(lista);
+        Alert.alert('Copiado!', 'O texto foi copiado para a área de transferência.');
+    };
 
     return <View style={styles.container}>
-        <View style={{position: 'absolute', top: distanceTop}}>
+        <View style={{ position: 'absolute', top: distanceTop }}>
             <Text style={styles.texto3}>
                 {`LISTAS`}
             </Text>
@@ -20,6 +28,12 @@ export default function Listas() {
             onPress={() => setTela(0)}
         >
             <Entypo name={'home'} size={50} color='white' />
+        </TouchableOpacity>
+        <TouchableOpacity
+            style={{ position: 'absolute', top: distanceTop, right: 20 }}
+            onPress={() => copiarParaClipboard()}
+        >
+            <Entypo name={'copy'} size={50} color='white' />
         </TouchableOpacity>
         <View style={{ height: '60%', width: '100%', justifyContent: 'space-evenly', alignItems: 'center', }}>
             <ButtonList text={'Ordem alfabética'} onPress={() => [setFatorDeOrdenacao('nome'), setTela(6)]} />

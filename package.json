@@ -9,14 +9,15 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "^53.0.12",
-    "expo-camera": "^16.1.8",
-    "expo-file-system": "^18.1.10",
-    "expo-mail-composer": "^14.1.4",
-    "expo-sqlite": "^15.2.12",
+    "expo": "^53.0.20",
+    "expo-camera": "^16.1.11",
+    "expo-file-system": "^18.1.11",
+    "expo-mail-composer": "^14.1.5",
+    "expo-sqlite": "^15.2.14",
     "expo-status-bar": "^2.2.3",
     "react": "^19.0.0",
-    "react-native": "^0.79.4"
+    "react-native": "^0.79.5",
+    "expo-clipboard": "~7.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
