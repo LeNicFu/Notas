@@ -8,16 +8,34 @@ import ListasSegundaEtapa from '../components/segundaEtapa/listasSegundaEtapa'
 import { ApagarListaSE, CriarListaSE, GetListSE } from '../data/dataSegundaEtapa'
 import { ListaEnviarSE, ListasSE } from '../components/segundaEtapa/functions'
 import { ActionModalAbrindoEmail, ActionModalEnviar, ActionModalEnviarSE } from '../components/modais/enviar'
+import * as Clipboard from 'expo-clipboard'
 
-// ApagarListaSE()
+
 CriarListaSE()
 
 console.log('--------------------------------------------------------------------')
 console.log(GetListSE().length)
 
+// ATUALIZAR LISTA DO ANO
+// Logo abaixo, a lista será obrigatoriamente atualizada caso o app já tenha sido usado no ano anterior. É preciso que não ocorra a coincidência de o número de alunos ser o mesmo do ano anterior
+const totalDeAlunos = require('../../atualizacaoApp.json')[0].totalDeAlunos
+if (GetListSE().length != totalDeAlunos) {
+    ApagarListaSE()
+    CriarListaSE()
+    console.log('Condição de atualização!', totalDeAlunos)
+}
+
 export default function SegundaEtapa() {
     const { setTela, centro, setCentro, anoSegundaEtapa, setAnoSegundaEtapa, setListasSegundaEtapa, visibleModalEnviarSE, setVisibleModalEnviarSE, visibleModalAbrindoEmail } = useContext(GlobalContext)
     const [reload, setReload] = useState(false)
+
+    const copiarParaClipboard = async () => {
+            // const lista = JSON.stringify(alunos)
+            // const lista = JSON.stringify(GetListSE())
+            const lista = JSON.stringify(ListaEnviarSE(GetListSE()))
+            await Clipboard.setStringAsync(lista);
+            Alert.alert('Copiado!', 'O texto foi copiado para a área de transferência.');
+        };
 
     useEffect(() => {
         ListasSE()
@@ -46,14 +64,19 @@ export default function SegundaEtapa() {
         </View>
         {centro ? null
             :
-            <View style={{ width: '98%', backgroundColor: 'black', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ width: '98%', backgroundColor: 'black', justifyContent: 'space-evenly', alignItems: 'center', paddingTop:20, flexDirection: 'row' }}>
                 <TouchableOpacity
-                    style={{ paddingTop: 20 }}
                     onPress={() => [setVisibleModalEnviarSE(true), setListasSegundaEtapa(ListaEnviarSE(GetListSE()))]}
-                >
+                    >
                     <Entypo name={'mail'} size={60} color='white' />
                 </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => copiarParaClipboard()}
+                >
+                    <Entypo name={'copy'} size={50} color='white' />
+                </TouchableOpacity>
             </View>
+
         }
         {centro ?
             <Ano centro={centro} /> :

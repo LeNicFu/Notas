@@ -31,8 +31,7 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.lenicfu.Notas",
-      "versionCode": 7
+      "package": "com.lenicfu.Notas"
     },
     "web": {
       "favicon": "./assets/favicon.png"

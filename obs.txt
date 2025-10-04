@@ -1,23 +1,11 @@
+Alteração feita no app.json:
+    tirei "versionCode": 8, que estava localizado como abaixo
+     
+  "package": "com.lenicfu.Notas",
+      "versionCode": 8
 
-eas.json
-{
-  "cli": {
-    "version": ">= 7.3.0",
-    "appVersionSource": "remote"
-  },
-  "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
-    "preview": {
-      "distribution": "internal"
-    },
-    "production": {
-      "autoIncrement": true
-    }
-  },
-  "submit": {
-    "production": {}
-  }
-}
+
+
+npm install expo@54.0.12 expo-camera@17.0.8 expo-clipboard@8.0.7 expo-file-system@19.0.16 expo-mail-composer@15.0.7 expo-sqlite@16.0.8 expo-status-bar@3.0.8 react@19.1.0 react-native@0.81.4 metro@0.83.1
+
+npm install @expo/metro-config@54.0.2

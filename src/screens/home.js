@@ -10,6 +10,9 @@ import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
 import { distanceTop } from '../settings'
 // import { ActionModalSenha } from '../components/modais/senha'
 
+
+SenhaSE()
+
 console.log('------------------- HOME -------------------')
 
 export default function Home() {
@@ -70,7 +73,7 @@ export default function Home() {
 
         <TouchableOpacity
             style={{ height: 40, width: '50%', justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white', position: 'absolute', center: 0, bottom: 150 }}
-        // onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
+            onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
         >
             <Text style={{ fontWeight: 'bold', fontSize: 24 }}>
                 SEGUNDA ETAPA
