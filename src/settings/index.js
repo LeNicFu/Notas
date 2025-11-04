@@ -17,4 +17,4 @@ export const margem = {
     superior2: 1 * lateral + 22.4 * lado
 }
 
-export const distanceTop = 0
+export const distanceTop = 45

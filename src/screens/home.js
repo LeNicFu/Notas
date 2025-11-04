@@ -8,6 +8,7 @@ import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLi
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
 import { distanceTop } from '../settings'
+import { SafeAreaView } from 'react-native-safe-area-context'
 // import { ActionModalSenha } from '../components/modais/senha'
 
 
@@ -35,92 +36,94 @@ export default function Home() {
         return { total: total, classificados: classificados, naoClassificados: total - classificados }
     }
 
-    return <View style={styles.container}>
-        <View style={{ position: 'absolute', top: distanceTop, center: 0 }}>
-            <Text style={[styles.texto2, { color: 'white' }]}>
-                Total: {totais().total}
-            </Text>
-            <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
-                C: {totais().classificados}
-            </Text>
-            <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
-                NC: {totais().naoClassificados}
-            </Text>
-            <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
-                2025
-            </Text>
+    return <SafeAreaView style={{flex: 1}}>
+        <View style={styles.container}>
+            <View style={{ position: 'absolute', top: distanceTop, center: 0 }}>
+                <Text style={[styles.texto2, { color: 'white' }]}>
+                    Total: {totais().total}
+                </Text>
+                <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
+                    C: {totais().classificados}
+                </Text>
+                <Text style={[styles.texto2, { color: 'white', fontSize: 18 }]}>
+                    NC: {totais().naoClassificados}
+                </Text>
+                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
+                    2025
+                </Text>
+            </View>
+            <TouchableOpacity
+                onPress={() => setTela(1)}
+                style={{ backgroundColor: 'white', borderRadius: 24 }}
+            >
+                <Image
+                    style={{ width: 200, height: 200 }}
+                    source={require('../../assets/icons8-barcode-scanner-100.png')} />
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={{ position: 'absolute', top: distanceTop, right: 20 }}
+                onPress={() => setTela(5)}
+            >
+                <Entypo name={'list'} size={60} color='white' />
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={{ position: 'absolute', top: distanceTop, left: 20 }}
+                onPress={() => setVisibleModalEnviar(true)}
+            >
+                <Entypo name={'mail'} size={60} color='white' />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={{ height: 40, width: '50%', justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white', position: 'absolute', center: 0, bottom: 150 }}
+                onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
+            >
+                <Text style={{ fontWeight: 'bold', fontSize: 24 }}>
+                    SEGUNDA ETAPA
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={{ position: 'absolute', bottom: 10, center: 0 }}
+                onPress={() => setVisibleModalExcluirLista(true)}
+            >
+                <Entypo name={'trash'} size={60} color='red' />
+            </TouchableOpacity>
+            <Modal
+                visible={visibleModalEnviar}
+                transparent={true}
+            >
+                <ActionModalEnviar />
+            </Modal>
+            <Modal
+                visible={visibleModalExcluirLista}
+                transparent={true}
+            >
+                <ActionModalExcluirLista />
+            </Modal>
+            <Modal
+                visible={visibleModalAbrindoEmail}
+                transparent={true}
+            >
+                <ActionModalAbrindoEmail />
+            </Modal>
+            <Modal
+                visible={visibleModalCodigoRepetido}
+                transparent={true}
+            >
+                <ActionModalCodigoRepetido />
+            </Modal>
+            <Modal
+                visible={visibleModalDadosSalvos}
+                transparent={true}
+            >
+                <ActionModalDadosSalvos />
+            </Modal>
+            <Modal
+                visible={visibleModalSenhaSE}
+                transparent={true}
+            >
+                <ActionModalSenhaSE />
+            </Modal>
         </View>
-        <TouchableOpacity
-            onPress={() => setTela(1)}
-            style={{ backgroundColor: 'white', borderRadius: 24 }}
-        >
-            <Image
-                style={{ width: 200, height: 200 }}
-                source={require('../../assets/icons8-barcode-scanner-100.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity
-            style={{ position: 'absolute', top: distanceTop, right: 20 }}
-            onPress={() => setTela(5)}
-        >
-            <Entypo name={'list'} size={60} color='white' />
-        </TouchableOpacity>
-        <TouchableOpacity
-            style={{ position: 'absolute', top: distanceTop, left: 20 }}
-            onPress={() => setVisibleModalEnviar(true)}
-        >
-            <Entypo name={'mail'} size={60} color='white' />
-        </TouchableOpacity>
-
-        <TouchableOpacity
-            style={{ height: 40, width: '50%', justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white', position: 'absolute', center: 0, bottom: 150 }}
-            onPress={() => GetSenhaSE().length > 0 ? setTela(8) : setVisibleModalSenhaSE(true)}
-        >
-            <Text style={{ fontWeight: 'bold', fontSize: 24 }}>
-                SEGUNDA ETAPA
-            </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-            style={{ position: 'absolute', bottom: 10, center: 0 }}
-            onPress={() => setVisibleModalExcluirLista(true)}
-        >
-            <Entypo name={'trash'} size={60} color='red' />
-        </TouchableOpacity>
-        <Modal
-            visible={visibleModalEnviar}
-            transparent={true}
-        >
-            <ActionModalEnviar />
-        </Modal>
-        <Modal
-            visible={visibleModalExcluirLista}
-            transparent={true}
-        >
-            <ActionModalExcluirLista />
-        </Modal>
-        <Modal
-            visible={visibleModalAbrindoEmail}
-            transparent={true}
-        >
-            <ActionModalAbrindoEmail />
-        </Modal>
-        <Modal
-            visible={visibleModalCodigoRepetido}
-            transparent={true}
-        >
-            <ActionModalCodigoRepetido />
-        </Modal>
-        <Modal
-            visible={visibleModalDadosSalvos}
-            transparent={true}
-        >
-            <ActionModalDadosSalvos />
-        </Modal>
-        <Modal
-            visible={visibleModalSenhaSE}
-            transparent={true}
-        >
-            <ActionModalSenhaSE />
-        </Modal>
-    </View>
+    </SafeAreaView>
 }

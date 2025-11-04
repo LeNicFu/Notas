@@ -1,4 +1,4 @@
-import { Modal, Text, TouchableOpacity, View } from 'react-native'
+import { Modal, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../context'
 import { Entypo } from '@expo/vector-icons'
@@ -9,7 +9,7 @@ import { ApagarListaSE, CriarListaSE, GetListSE } from '../data/dataSegundaEtapa
 import { ListaEnviarSE, ListasSE } from '../components/segundaEtapa/functions'
 import { ActionModalAbrindoEmail, ActionModalEnviar, ActionModalEnviarSE } from '../components/modais/enviar'
 import * as Clipboard from 'expo-clipboard'
-
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 CriarListaSE()
 
@@ -30,12 +30,12 @@ export default function SegundaEtapa() {
     const [reload, setReload] = useState(false)
 
     const copiarParaClipboard = async () => {
-            // const lista = JSON.stringify(alunos)
-            // const lista = JSON.stringify(GetListSE())
-            const lista = JSON.stringify(ListaEnviarSE(GetListSE()))
-            await Clipboard.setStringAsync(lista);
-            Alert.alert('Copiado!', 'O texto foi copiado para a área de transferência.');
-        };
+        // const lista = JSON.stringify(alunos)
+        // const lista = JSON.stringify(GetListSE())
+        const lista = JSON.stringify(ListaEnviarSE(GetListSE()))
+        await Clipboard.setStringAsync(lista);
+        Alert.alert('Copiado!', 'O texto foi copiado para a área de transferência.');
+    };
 
     useEffect(() => {
         ListasSE()
@@ -46,7 +46,8 @@ export default function SegundaEtapa() {
         setAnoSegundaEtapa(null)
     }, [reload])
 
-    return <View style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
+    return <SafeAreaView style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
+        <StatusBar barStyle={'light-content'} />
         <View style={{ width: '98%', backgroundColor: 'black', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <TouchableOpacity
                 onPress={() => setTela(0)}
@@ -64,10 +65,10 @@ export default function SegundaEtapa() {
         </View>
         {centro ? null
             :
-            <View style={{ width: '98%', backgroundColor: 'black', justifyContent: 'space-evenly', alignItems: 'center', paddingTop:20, flexDirection: 'row' }}>
+            <View style={{ width: '98%', backgroundColor: 'black', justifyContent: 'space-evenly', alignItems: 'center', paddingTop: 20, flexDirection: 'row' }}>
                 <TouchableOpacity
                     onPress={() => [setVisibleModalEnviarSE(true), setListasSegundaEtapa(ListaEnviarSE(GetListSE()))]}
-                    >
+                >
                     <Entypo name={'mail'} size={60} color='white' />
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -101,5 +102,5 @@ export default function SegundaEtapa() {
         >
             <ActionModalAbrindoEmail />
         </Modal>
-    </View>
+    </SafeAreaView>
 }
