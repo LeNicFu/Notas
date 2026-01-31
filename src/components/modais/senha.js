@@ -7,8 +7,6 @@ import { InserirSenha } from '../../data'
 import {senhaDeAcesso} from '../../../password'
 
 export const ActionModalSenha = () => {
-    // const { setVisibleModalSenha } = useContext(GlobalContext)
-    // const [senhaDigitada, setSenhaDigitada] = useState('')
 
     const verificaSenha = () => {
         if (senhaDigitada ===  senhaDeAcesso) {

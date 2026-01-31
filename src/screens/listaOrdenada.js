@@ -4,7 +4,6 @@ import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import styles from '../styles'
 import { Entypo } from '@expo/vector-icons'
 import { EncontrarEscola } from '../components/functions'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function ListaOrdenada() {
   const { listaDeAlunosNotas, setTela, fatorDeOrdenacao, setMunicipio, setEscola, setAno, setNome, setCodigo, setNota, setId } = useContext(GlobalContext)
@@ -78,7 +77,7 @@ export default function ListaOrdenada() {
     </TouchableOpacity>
   }
   ///////////////////////////////////////////////////////////
-  return <SafeAreaView style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
+  return <View style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
     <View style={{ width: '98%', backgroundColor: 'black', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
       <TouchableOpacity
         onPress={() => setTela(0)}
@@ -101,5 +100,5 @@ export default function ListaOrdenada() {
       keyExtractor={(aluno) => aluno.id.toString()}
       renderItem={({ item }) => EstiloLista(item.codigo, item.nome, item.nota, item.id)}
     />
-  </SafeAreaView>
+  </View>
 }//105

@@ -5,12 +5,13 @@ import styles from '../../styles'
 import MyButton from '../myButton'
 import { colors } from '../../colors'
 import * as MailComposer from 'expo-mail-composer'
+import { senhaDeAcesso } from '../../../password'
 
 export const ActionModalEnviar = () => {
     const { setVisibleModalEnviar, listaDeAlunosNotas, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [alunos, setAlunos] = useState(listaDeAlunosNotas)
     const [senha, setSenha] = useState('')
-    const passWord = 'OLIM@TUESC'
+    const passWord = senhaDeAcesso
 
 
     useEffect(() => {
@@ -89,7 +90,7 @@ export const ActionModalEnviar = () => {
 export const ActionModalEnviarSE = () => {
     const { setVisibleModalEnviarSE, listasSegundaEtapa, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [senha, setSenha] = useState('')
-    const passWord = 'OLIM@TUESC'
+    const passWord = senhaDeAcesso
     
     const enviarEmail = async () => {
         const lista = JSON.stringify(listasSegundaEtapa)

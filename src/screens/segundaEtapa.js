@@ -9,7 +9,6 @@ import { ApagarListaSE, CriarListaSE, GetListSE } from '../data/dataSegundaEtapa
 import { ListaEnviarSE, ListasSE } from '../components/segundaEtapa/functions'
 import { ActionModalAbrindoEmail, ActionModalEnviar, ActionModalEnviarSE } from '../components/modais/enviar'
 import * as Clipboard from 'expo-clipboard'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 CriarListaSE()
 
@@ -46,7 +45,7 @@ export default function SegundaEtapa() {
         setAnoSegundaEtapa(null)
     }, [reload])
 
-    return <SafeAreaView style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
+    return <View style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
         <StatusBar barStyle={'light-content'} />
         <View style={{ width: '98%', backgroundColor: 'black', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <TouchableOpacity
@@ -102,5 +101,5 @@ export default function SegundaEtapa() {
         >
             <ActionModalAbrindoEmail />
         </Modal>
-    </SafeAreaView>
+    </View>
 }

@@ -309,7 +309,7 @@ export const ActionModalSenhaSE = () => {
         >
             <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%', borderWidth: 4, borderColor: 'blue', borderRadius: 20 }}>
                 <Text style={styles.texto2}>
-                    Digite a senha para ter acesso aos dados da seguna etapa. Esse processo será feito apenas no preimeiro acesso.
+                    Digite a senha para ter acesso aos dados da segunda etapa. Esse processo será feito apenas no primeiro acesso.
                 </Text>
                 <TextInput
                     style={styles.nota}

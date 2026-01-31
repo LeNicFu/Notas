@@ -1,3 +1,4 @@
+import { senhaDeAcesso } from '../../password'
 import { db } from './index'
 
 export function SenhaSE() {
@@ -8,7 +9,7 @@ export function SenhaSE() {
 }
 
 export function InserirSenhaSE(senha) {
-    if (senha === 'OLIM@TUESC'){
+    if (senha === senhaDeAcesso){
         db.execSync(`
             INSERT INTO senhaSE (senha) VALUES ("${senha}");
         `)

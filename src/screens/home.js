@@ -8,7 +8,6 @@ import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLi
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
 import { distanceTop } from '../settings'
-import { SafeAreaView } from 'react-native-safe-area-context'
 // import { ActionModalSenha } from '../components/modais/senha'
 
 
@@ -36,7 +35,7 @@ export default function Home() {
         return { total: total, classificados: classificados, naoClassificados: total - classificados }
     }
 
-    return <SafeAreaView style={{flex: 1}}>
+    return <View style={{flex: 1}}>
         <View style={styles.container}>
             <View style={{ position: 'absolute', top: distanceTop, center: 0 }}>
                 <Text style={[styles.texto2, { color: 'white' }]}>
@@ -125,5 +124,5 @@ export default function Home() {
                 <ActionModalSenhaSE />
             </Modal>
         </View>
-    </SafeAreaView>
+    </View>
 }

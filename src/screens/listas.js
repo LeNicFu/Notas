@@ -6,7 +6,6 @@ import { Entypo } from '@expo/vector-icons'
 import { ButtonList } from '../components/myButton'
 import { distanceTop } from '../settings'
 import * as Clipboard from 'expo-clipboard'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Listas() {
     const { listaDeAlunosNotas, setTela, setFatorDeOrdenacao } = useContext(GlobalContext)
@@ -18,7 +17,7 @@ export default function Listas() {
         Alert.alert('Copiado!', 'O texto foi copiado para a área de transferência.');
     };
 
-    return <SafeAreaView style={styles.container}>
+    return <View style={styles.container}>
         <View style={{ position: 'absolute', top: distanceTop }}>
             <Text style={styles.texto3}>
                 {`LISTAS`}
@@ -42,5 +41,5 @@ export default function Listas() {
             <ButtonList text={'Nota'} onPress={() => [setFatorDeOrdenacao('nota'), setTela(6)]} />
             <ButtonList text={'Código'} onPress={() => [setFatorDeOrdenacao('codigo'), setTela(6)]} />
         </View>
-    </SafeAreaView>
+    </View>
 }
