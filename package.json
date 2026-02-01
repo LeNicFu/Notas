@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "^54.0.32",
+    "expo": "^54.0.33",
     "expo-camera": "^17.0.10",
     "expo-clipboard": "^8.0.8",
     "expo-file-system": "^19.0.21",
@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@expo/metro-config": "^54.0.2",
     "metro": "^0.83.1"
   },
   "private": true
