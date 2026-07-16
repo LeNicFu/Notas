@@ -50,7 +50,7 @@ export const ActionModalEnviar = () => {
     }
 
     const confirmar = (senha) => {
-        if (senha == passWord) {
+        if (senha.trimEnd() == passWord) {
             setVisibleModalEnviar(false)
             enviarEmail()
             setVisibleModalAbrindoEmail(true)

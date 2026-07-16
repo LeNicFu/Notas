@@ -1,13 +1,13 @@
-import { useContext, useEffect } from 'react'
-import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
-import { GlobalContext } from '../context'
-import styles from '../styles'
-import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
-import { Entypo } from '@expo/vector-icons'
 import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLista, ActionModalSenhaSE } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
+import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
+import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
+import { useContext, useEffect } from 'react'
+import { Entypo } from '@expo/vector-icons'
+import { GlobalContext } from '../context'
 import { distanceTop } from '../settings'
+import styles from '../styles'
 // import { ActionModalSenha } from '../components/modais/senha'
 
 
@@ -48,7 +48,7 @@ export default function Home() {
                     NC: {totais().naoClassificados}
                 </Text>
                 <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
-                    2025
+                    2026
                 </Text>
             </View>
             <TouchableOpacity
