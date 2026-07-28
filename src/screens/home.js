@@ -1,4 +1,4 @@
-import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalExcluirLista, ActionModalSenhaSE } from '../components/modais'
+import { ActionModalCodigoRepetido, ActionModalDadosSalvos, ActionModalEscolherAno, ActionModalEscolherEscola, ActionModalExcluirLista, ActionModalSenhaSE, ActionModalToScan } from '../components/modais'
 import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais/enviar'
 import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
@@ -8,15 +8,14 @@ import { Entypo } from '@expo/vector-icons'
 import { GlobalContext } from '../context'
 import { distanceTop } from '../settings'
 import styles from '../styles'
-// import { ActionModalSenha } from '../components/modais/senha'
-
+import { ButtonList } from '../components/myButton'
 
 SenhaSE()
 
 console.log('------------------- HOME -------------------')
 
 export default function Home() {
-    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, visibleModalDadosSalvos, setVisibleModalDadosSalvos, visibleModalSenhaSE, setVisibleModalSenhaSE } = useContext(GlobalContext)
+    const { setTela, setListaDeAlunosNotas, visibleModalEnviar, setVisibleModalEnviar, visibleModalExcluirLista, setVisibleModalExcluirLista, visibleModalAbrindoEmail, listaDeAlunosNotas, visibleModalCodigoRepetido, visibleModalSenha, visibleModalDadosSalvos, setVisibleModalDadosSalvos, visibleModalSenhaSE, setVisibleModalSenhaSE, escolaEscolhida, setEscolaEscolhida, anoEscolhido, setAnoEscolhido, visibleModalEscolherEscola, setVisibleModalEscolherEscola, visibleModalEscolherAno, setVisibleModalEscolherAno, visibleModalToScan, setVisibleModalToScan } = useContext(GlobalContext)
 
     useEffect(() => {
         const initialize = async () => {
@@ -35,7 +34,15 @@ export default function Home() {
         return { total: total, classificados: classificados, naoClassificados: total - classificados }
     }
 
-    return <View style={{flex: 1}}>
+    const toScan = () => {
+        if (escolaEscolhida == 'Escolha a escola' || anoEscolhido == 'Escolha o ano') {
+            setVisibleModalToScan(true)
+        } else {
+            setTela(1)
+        }
+    }
+
+    return <View style={{ flex: 1 }}>
         <View style={styles.container}>
             <View style={{ position: 'absolute', top: distanceTop, center: 0 }}>
                 <Text style={[styles.texto2, { color: 'white' }]}>
@@ -51,8 +58,19 @@ export default function Home() {
                     2026
                 </Text>
             </View>
+            <View style={{width: '100%', alignItems: 'center', paddingBottom: 20}}>
+                <ButtonList
+                    text={escolaEscolhida}
+                    onPress={() => setVisibleModalEscolherEscola(true)}
+                    />
+                <View style={{width: '100%', height: 20}} />
+                <ButtonList
+                    text={anoEscolhido > 0 ?`${anoEscolhido} º ano`: anoEscolhido}
+                    onPress={() => setVisibleModalEscolherAno(true)}
+                />
+            </View>
             <TouchableOpacity
-                onPress={() => setTela(1)}
+                onPress={() => toScan()}
                 style={{ backgroundColor: 'white', borderRadius: 24 }}
             >
                 <Image
@@ -122,6 +140,24 @@ export default function Home() {
                 transparent={true}
             >
                 <ActionModalSenhaSE />
+            </Modal>
+            <Modal
+                visible={visibleModalEscolherEscola}
+                transparent={true}
+            >
+                    <ActionModalEscolherEscola />
+            </Modal>
+            <Modal
+                visible={visibleModalEscolherAno}
+                transparent={true}
+            >
+                    <ActionModalEscolherAno />
+            </Modal>
+            <Modal
+            visible={visibleModalToScan}
+            transparent={true}
+            >
+                <ActionModalToScan />
             </Modal>
         </View>
     </View>

@@ -8,9 +8,10 @@ import TituloTexto from '../components/tituloTexto'
 import { Entypo } from '@expo/vector-icons'
 
 export default function Scanned() {
-    const { setTela, codigo, nome, setNome, ano, setAno, municipio, setMunicipio, escola, setEscola, setNota, listaDeAlunosNotas, setVisibleModalCodigoRepetido } = useContext(GlobalContext)
+    const { setTela, codigo, nome, setNome, ano, setAno, municipio, setMunicipio, escola, setEscola, setNota, listaDeAlunosNotas, setVisibleModalCodigoRepetido, anoEscolhido, ano6a, ano6b, ano7a, ano7b, ano8a, ano8b, ano9a, ano9b } = useContext(GlobalContext)
 
     const [proximaTela, setProximaTela] = useState(true)
+    const [erro, setErro] = useState(false)
 
     useEffect(() => {
         if (EncontrarCodigo(codigo, listaDeAlunosNotas)) {
@@ -25,15 +26,34 @@ export default function Scanned() {
         }
     }, [])
 
+    const AnoCorreto = (codigo) => {
+        if (anoEscolhido == 6) {
+            return ano6a <= codigo <= ano6b ? true : false
+        }
+        if (anoEscolhido == 7) {
+            return ano7a <= codigo <= ano7b ? true : false
+        }
+        if (anoEscolhido == 8) {
+            return ano8a <= codigo <= ano8b ? true : false
+        }
+        if (anoEscolhido == 9) {
+            return ano9a <= codigo <= ano9b ? true : false
+        }
+    }
+
     const EncontrarNome = (codigo) => {
         const itemComOCodigo = lista.find(item => item.codigo == codigo)
         if (itemComOCodigo) {
+            //////////////////////////////////////
+            // if (ano6a <= codigo
+            //////////////////////////////////////
             return itemComOCodigo.nome
         } else if (codigo >= 1 && codigo <= codigoEscolaAno[codigoEscolaAno.length - 1].Ano9b) {
-            return ''
+                return ''
         } else {
             setProximaTela(false)
-            return 'O código está ERRADO!'
+            setErro(true)
+            return 'O código não pertence a nenhuma escola!'
         }
     }
 
@@ -46,17 +66,27 @@ export default function Scanned() {
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => setTela(1)}
-                >
+            >
                 <Entypo name={'back'} size={50} color='white' />
             </TouchableOpacity>
         </View>
-        <View style={{ width: '80%', height: '60%', backgroundColor: 'white', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
-            <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
-            <TituloTexto titulo={'ESCOLA'} texto={escola} />
-            <TituloTexto titulo={ano} />
-            <TituloTexto titulo={'NOME'} texto={nome} />
-            <TituloTexto titulo={'CÓDIGO'} texto={codigo} />
-        </View>
+        {erro ?
+            <View style={{ width: '80%', height: '60%', backgroundColor: '#f53016', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
+                <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
+                <TituloTexto titulo={'ESCOLA'} texto={escola} />
+                <TituloTexto titulo={ano} />
+                <TituloTexto titulo={'NOME'} texto={nome} />
+                <TituloTexto titulo={'CÓDIGO'} texto={codigo} />
+            </View>
+            :
+            <View style={{ width: '80%', height: '60%', backgroundColor: 'white', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
+                <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
+                <TituloTexto titulo={'ESCOLA'} texto={escola} />
+                <TituloTexto titulo={ano} />
+                <TituloTexto titulo={'NOME'} texto={nome} />
+                <TituloTexto titulo={'CÓDIGO'} texto={codigo} />
+            </View>
+        }
         <View style={{ paddingTop: '10%' }}>
             <MyButton icon={'check'} onPress={() => proximaTela === true ? setTela(3) : setTela(1)} />
         </View>

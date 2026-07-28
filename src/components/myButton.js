@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     buttonList: {
-        height: 50,
+        minHeight: 50,
         width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         color: 'black',
-        marginLeft: 10
+        marginLeft: 10,
+        textAlign: 'center'
     }
 })

@@ -19,16 +19,25 @@ export default StyleSheet.create({
         backgroundColor: '#BBBBBB',
         borderRadius: 24
     },
+    containerModalEscolas: {
+        height: '98%',
+        backgroundColor: 'white',
+        borderRadius: 24,
+    },
+    containerModalAno: {
+        width: '100%',
+        backgroundColor: 'white',
+        borderRadius: 24,
+    },
     containerListas: {
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         flexDirection: 'row',
         minHeight: 65,
         backgroundColor: '#BCB9BA',
         marginHorizontal: 4,
         marginVertical: 2,
         borderRadius: 8,
-        // flexWrap: 'wrap'
     },
     texto1: {
         fontSize: 24,

@@ -9,6 +9,8 @@ import { colors } from '../../colors'
 import TituloTexto from '../tituloTexto'
 import { EditarNomeSE, EditarNotaSE } from '../../data/dataSegundaEtapa'
 import { GetSenhaSE, InserirSenhaSE } from '../../data/senhaSegundaEtapa'
+import EscolaEscolhida from '../escolaEscolhida'
+import AnoEscolhido from '../anoEscolhido'
 
 export const ActionModalEditarNome = () => {
     const { setVisibleModalEditarNome, nome, setNome } = useContext(GlobalContext)
@@ -121,7 +123,7 @@ export const ActionModalEditarSE = () => {
         onPress={() => setVisibleModalEditarSE(false)}
     >
         <TouchableOpacity
-            style={[styles.containerModal, {borderWidth: 3}]}
+            style={[styles.containerModal, { borderWidth: 3 }]}
             activeOpacity={1}
         >
             <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
@@ -129,7 +131,7 @@ export const ActionModalEditarSE = () => {
                     NOME
                 </Text>
                 <TextInput
-                    style={[styles.nota,{color: 'blue'}]}
+                    style={[styles.nota, { color: 'blue' }]}
                     placeholder='Digite o nome'
                     onChangeText={newName => setNomeEditado(newName.toUpperCase())}
                     defaultValue={nome}
@@ -189,10 +191,10 @@ export const ActionModalExcluirNome = () => {
 /////////////////////////////////////////////////////////////////
 export const ActionModalExcluirLista = () => {
     const { setVisibleModalExcluirLista, setListaDeAlunosNotas } = useContext(GlobalContext)
-    const [confirmarEnvio, setConfirmarEnvio] =useState('')
+    const [confirmarEnvio, setConfirmarEnvio] = useState('')
 
     const Confirma = () => {
-        if(confirmarEnvio.toUpperCase() === 'OLIMAT'){
+        if (confirmarEnvio.toUpperCase() === 'OLIMAT') {
             setVisibleModalExcluirLista(false)
             ApagarLista()
             CriarMyNotas()
@@ -218,7 +220,7 @@ export const ActionModalExcluirLista = () => {
                     Digite OLIMAT para confirmar
                 </Text>
                 <TextInput
-                    style={{width: '100%', textAlign: 'center', fontSize: 24}}
+                    style={{ width: '100%', textAlign: 'center', fontSize: 24 }}
                     placeholder='OLIMAT'
                     onChangeText={newName => setConfirmarEnvio(newName.toUpperCase())}
                     multiline={true}
@@ -246,7 +248,7 @@ export const ActionModalCodigoRepetido = () => {
         >
             <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
                 <Text style={styles.texto2}>
-                   O código {codigo} já foi registrado anteriormente!
+                    O código {codigo} já foi registrado anteriormente!
                 </Text>
                 <View style={{ flexDirection: 'row', width: '90%', justifyContent: 'space-around' }}>
                     <MyButton icon={'check'} onPress={() => setVisibleModalCodigoRepetido(false)} />
@@ -261,26 +263,26 @@ export const ActionModalDadosSalvos = () => {
     const { setVisibleModalDadosSalvos, codigo, municipio, escola, ano, nome, nota } = useContext(GlobalContext)
 
     return <TouchableOpacity
-    style={styles.modal}
-    onPress={() => setVisibleModalDadosSalvos(false)}
->
-    <View style={{ width: '80%', height: '60%', backgroundColor: '#B1F793', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
-        <Text style={styles.texto2}>
-            DADOS INSERIDOS
-        </Text>
-        <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
-        <TituloTexto titulo={'ESCOLA'} texto={escola} />
-        <TituloTexto titulo={ano} />
-        <TituloTexto titulo={'NOME'} texto={nome} />
-        <TituloTexto titulo={'CÓDIGO'} texto={codigo} />
-        <View>
-            <Text style={styles.texto2}>NOTA</Text>
-            <Text
-                style={[styles.texto1, { fontSize: 32, fontWeight: 'bold', color: nota >= 8 ? 'blue' : 'red' }]}>{nota}
+        style={styles.modal}
+        onPress={() => setVisibleModalDadosSalvos(false)}
+    >
+        <View style={{ width: '80%', height: '60%', backgroundColor: '#B1F793', borderRadius: 24, justifyContent: 'space-evenly', alignItems: 'center' }}>
+            <Text style={styles.texto2}>
+                DADOS INSERIDOS
             </Text>
+            <TituloTexto titulo={'MUNICÍPIO'} texto={municipio} />
+            <TituloTexto titulo={'ESCOLA'} texto={escola} />
+            <TituloTexto titulo={ano} />
+            <TituloTexto titulo={'NOME'} texto={nome} />
+            <TituloTexto titulo={'CÓDIGO'} texto={codigo} />
+            <View>
+                <Text style={styles.texto2}>NOTA</Text>
+                <Text
+                    style={[styles.texto1, { fontSize: 32, fontWeight: 'bold', color: nota >= 8 ? 'blue' : 'red' }]}>{nota}
+                </Text>
+            </View>
         </View>
-    </View>
-</TouchableOpacity>
+    </TouchableOpacity>
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -320,6 +322,63 @@ export const ActionModalSenhaSE = () => {
                     <MyButton icon={'circle-with-cross'} color={colors.cancelar} onPress={() => setVisibleModalSenhaSE(false)} />
                     <MyButton icon={'check'} onPress={() => confirmar(senha)} />
                 </View>
+            </View>
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const ActionModalEscolherEscola = () => {
+    const { setVisibleModalEscolherEscola,  } = useContext(GlobalContext)
+
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalEscolherEscola(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModalEscolas}
+            activeOpacity={1}
+        >
+            <EscolaEscolhida />
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const ActionModalEscolherAno = () => {
+    const { setVisibleModalEscolherAno } = useContext(GlobalContext)
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalEscolherAno(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModalAno}
+            activeOpacity={1}
+        >
+            <AnoEscolhido />
+        </TouchableOpacity>
+    </TouchableOpacity>
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const ActionModalToScan = () => {
+    const { setVisibleModalToScan } = useContext(GlobalContext)
+    return <TouchableOpacity
+        style={styles.modal}
+        onPress={() => setVisibleModalToScan(false)}
+    >
+        <TouchableOpacity
+            style={styles.containerModal}
+            activeOpacity={1}
+            onPress={() => setVisibleModalToScan(false)}
+        >
+            <View style={{ alignItems: 'center', width: '100%', justifyContent: 'space-evenly', height: '100%' }}>
+                <Text style={styles.texto2}>
+                    É preciso escolher a escola e o ano!
+                </Text>
             </View>
         </TouchableOpacity>
     </TouchableOpacity>
