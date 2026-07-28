@@ -1,4 +1,4 @@
-export const codigoEscolaAno = require('../data/paginaAno.json')
+const codigoEscolaAno = require('../data/paginaAno.json')
 export const lista = require('../data/listaAlunos.json')
 
 export function EncontrarEscola(codigo) {

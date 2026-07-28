@@ -3,12 +3,12 @@ import { ActionModalAbrindoEmail, ActionModalEnviar } from '../components/modais
 import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
 import { CriarMyNotas, CriarMySenha, GetList, GetSenha } from '../data'
 import { GetSenhaSE, SenhaSE } from '../data/senhaSegundaEtapa'
+import { ButtonList } from '../components/myButton'
 import { useContext, useEffect } from 'react'
 import { Entypo } from '@expo/vector-icons'
 import { GlobalContext } from '../context'
 import { distanceTop } from '../settings'
 import styles from '../styles'
-import { ButtonList } from '../components/myButton'
 
 SenhaSE()
 

@@ -5,13 +5,12 @@ import { useContext } from 'react'
 import { GlobalContext } from '../context'
 import { Entypo } from '@expo/vector-icons'
 
-
 const paginaAno = require('../data/paginaAno.json')
 
 export default function EscolaEscolhida() {
     const { setVisibleModalEscolherEscola, setEscolaEscolhida, ano6a, setAno6a, ano6b, setAno6b, ano7a, setAno7a, ano7b, setAno7b, ano8a, setAno8a, ano8b, setAno8b, ano9a, setAno9a, ano9b, setAno9b } = useContext(GlobalContext)
 
-    const escolas = paginaAno
+    const escolas = [...paginaAno]
 
     escolas.sort(function (a, b) {
         return a.NomeDaEscola.localeCompare(b.NomeDaEscola, 'pt', { sensitivity: 'base' })
