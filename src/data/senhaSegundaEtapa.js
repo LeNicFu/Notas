@@ -1,4 +1,4 @@
-import password from '../../password'
+import password from '../password'
 import { db } from './index'
 
 export function SenhaSE() {
