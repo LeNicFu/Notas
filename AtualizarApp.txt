@@ -1,3 +1,5 @@
 // ---- ATENÇÃO ----
 // ATUALIZAR LISTA DO ANO
 // totalDeAlunos no arquivo atualizacaoApp.json é o total de alunos na lista da segunda etapa do ano atual. A lista será obrigatoriamente atualizada caso o app já tenha sido usado no ano anterior. É preciso que não ocorra a coincidência de o número ser o mesmo do ano anterior
+
+// Alista nova deve ser inserida em src\data\listaParaPresenca.json
