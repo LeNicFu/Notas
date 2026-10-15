@@ -1,19 +1,16 @@
-import { useContext, useEffect, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { GlobalContext } from '../../context'
-import styles from '../../styles'
-import MyButton from '../myButton'
-import { colors } from '../../colors'
+import { useContext, useEffect, useState } from 'react'
 import * as MailComposer from 'expo-mail-composer'
-// import senhaDeAcesso from '../../../password'
+import { GlobalContext } from '../../context'
+import password from '../../../password'
+import { colors } from '../../colors'
+import MyButton from '../myButton'
+import styles from '../../styles'
 
 export const ActionModalEnviar = () => {
     const { setVisibleModalEnviar, listaDeAlunosNotas, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [alunos, setAlunos] = useState(listaDeAlunosNotas)
     const [senha, setSenha] = useState('')
-    // const passWord = senhaDeAcesso
-    const passWord = 'OLIMAT-UESC'
-
 
     useEffect(() => {
         OrdenadarNotas()
@@ -50,7 +47,7 @@ export const ActionModalEnviar = () => {
     }
 
     const confirmar = (senha) => {
-        if (senha.trimEnd() == passWord) {
+        if (senha.trimEnd() == password) {
             setVisibleModalEnviar(false)
             enviarEmail()
             setVisibleModalAbrindoEmail(true)
@@ -91,8 +88,6 @@ export const ActionModalEnviar = () => {
 export const ActionModalEnviarSE = () => {
     const { setVisibleModalEnviarSE, listasSegundaEtapa, setVisibleModalAbrindoEmail } = useContext(GlobalContext)
     const [senha, setSenha] = useState('')
-    // const passWord = senhaDeAcesso
-    const passWord = 'OLIMAT-UESC'
     
     const enviarEmail = async () => {
         const lista = JSON.stringify(listasSegundaEtapa)
@@ -111,7 +106,7 @@ export const ActionModalEnviarSE = () => {
     }
 
     const confirmar = (senha) => {
-        if (senha == passWord) {
+        if (senha == password) {
             setVisibleModalEnviarSE(false)
             enviarEmail()
             setVisibleModalAbrindoEmail(true)
